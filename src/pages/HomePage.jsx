@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BiSolidDashboard } from 'react-icons/bi';
 import { BsFillFileEarmarkTextFill } from 'react-icons/bs';
+import { TbLogout2 } from 'react-icons/tb';
 
 import DashBoardTab from './DashBoardTab';
 import leadmint from '../assets/leadmint.png';
@@ -14,6 +15,7 @@ import data from '../config/data.json';
 
 const HomePage = () => {
 	const location = useLocation();
+	const navigate = useNavigate()
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 	const [separatorPos, setSeparatorPos] = useState(
 		window.innerWidth <= data.navSnapWidth ? 70 : 200
@@ -32,6 +34,10 @@ const HomePage = () => {
 			to: '/billing',
 		},
 	];
+
+	const logoutUser = () =>{
+		navigate('/login')
+	}
 
 	useEffect(() => {
 		window.addEventListener('resize', () => {
@@ -66,6 +72,15 @@ const HomePage = () => {
 						</Link>
 					))}
 				</div>
+
+				<NavItem
+					logout
+					// isActive={link.to === location.pathname}
+					label="Logout"
+					Icon={TbLogout2}
+					screenWidth={screenWidth}
+					onClick={logoutUser}
+				/>
 			</nav>
 
 			<main>

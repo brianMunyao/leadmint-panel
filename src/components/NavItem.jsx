@@ -6,13 +6,23 @@ import colors from '../config/colors';
 import data from '../config/data.json';
 
 const NavItem = ({
+	logout = false,
+	onClick,
 	isActive = false,
 	label = '',
 	Icon = BsQuestionCircle,
 	screenWidth,
+	style,
 }) => {
 	return (
-		<Container isActive={isActive} title={label} screenWidth={screenWidth}>
+		<Container
+			isActive={isActive}
+			title={label}
+			screenWidth={screenWidth}
+			onClick={onClick && onClick}
+			style={style}
+			logout={logout}
+		>
 			<Icon />
 			<span className="inner">{label}</span>
 			<span className="outer">{label}</span>
@@ -21,6 +31,7 @@ const NavItem = ({
 };
 
 const Container = styled.div`
+	cursor: pointer;
 	width: 100%;
 	padding: 10px;
 	border-radius: 7px;
@@ -30,13 +41,28 @@ const Container = styled.div`
 		screenWidth <= data.navSnapWidth ? 'center' : 'flex-start'};
 	gap: 5px;
 	transition: all 0.2s linear;
-	color: ${({ isActive }) => (isActive ? '#fff' : '#3d3d3d')};
-	background: ${({ isActive }) => (isActive ? colors.blueDark : '#fff')};
+	color: ${({ isActive, logout }) =>
+		isActive ? '#fff' : logout ? colors.danger : '#3d3d3d'};
+	background: ${({ isActive, logout }) =>
+		isActive
+			? logout
+				? colors.danger
+				: colors.blueDark
+			: logout
+			? colors.dangerLight
+			: '#fff'};
+
+	margin-top: ${({ logout }) => (logout ? 'auto' : 'initial')};
 
 	&:hover {
-		background: ${({ isActive }) =>
-			isActive ? colors.blueDarker : colors.blueDarkLight};
-		color: ${({ isActive }) => (isActive ? '#fff' : colors.blueDarker)};
+		background: ${({ isActive, logout }) =>
+			isActive
+				? colors.blueDarker
+				: logout
+				? colors.danger
+				: colors.blueDarkLight};
+		color: ${({ isActive, logout }) =>
+			isActive ? '#fff' : logout ? '#fff' : colors.blueDarker};
 	}
 	.outer {
 		display: none;
