@@ -6,8 +6,13 @@ import ErrorPage from './pages/ErrorPage';
 import BillingTab from './pages/BillingTab';
 import DashBoardTab from './pages/DashBoardTab';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter([
+	{
+		path: '/register',
+		element: <RegisterPage />,
+	},
 	{
 		path: '/login',
 		element: <LoginPage />,

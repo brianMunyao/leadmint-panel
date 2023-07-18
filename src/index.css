@@ -1,17 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
 
 *,
 html {
 	padding: 0;
 	margin: 0;
-	font-family: 'Lexend', system-ui, -apple-system, BlinkMacSystemFont,
+	font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
 		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
 		'Helvetica Neue', sans-serif;
 	box-sizing: border-box;
 }
 
 a {
-	color: #000;
+	color: #114edc;
 	text-decoration: none;
 	width: fit-content;
+}
+
+input {
+	font-size: 15px;
+}
+
+input:focus {
+	outline: none;
 }
