@@ -52,7 +52,7 @@ const Container = styled.div`
 		}
 	}
 	.tab-content {
-		padding: 15px;
+		padding: 20px;
 		flex: 1;
 	}
 `;

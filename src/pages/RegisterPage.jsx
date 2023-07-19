@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import {
 	IoArrowBack,
+	IoBusinessOutline,
 	IoLockClosedOutline,
 	IoMailOutline,
 } from 'react-icons/io5';
@@ -29,7 +30,7 @@ const RegisterPage = () => {
 								label="Company Name"
 								placeholder="Company Name"
 								value=""
-								Icon={IoMailOutline}
+								Icon={IoBusinessOutline}
 							/>
 							<FormItem
 								inputType="email"

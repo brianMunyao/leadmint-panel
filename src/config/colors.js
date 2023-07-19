@@ -1,5 +1,7 @@
 const colors = {
 	blueLight: '#00dcff',
+	blueLightDark: '#00a4bf',
+
 	blueDark: '#114edc',
 	blueDarker: '#0a2e83',
 	blueDarkLight: '#d1e8ff',

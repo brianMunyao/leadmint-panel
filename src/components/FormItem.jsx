@@ -11,6 +11,7 @@ const FormItem = ({
 	value,
 	Icon,
 	error,
+	disabled,
 }) => {
 	return (
 		<Container>
@@ -23,6 +24,7 @@ const FormItem = ({
 					placeholder={placeholder}
 					value={value}
 					id={name}
+					disabled={disabled}
 				/>
 			</div>
 			{error && <p className="form-error">{error}</p>}
@@ -35,22 +37,24 @@ const Container = styled.div`
 	flex-direction: column;
 	gap: 4px;
 	label {
-		font-size: 15px;
+		font-size: 14.5px;
 	}
 	div {
 		position: relative;
 		width: 100%;
-		height: 40px;
-		border: 1.5px solid #cbcbcb;
-		border-radius: 4px;
+		height: 42px;
+		border: 1.7px solid #cbcbcb;
+		border-radius: 6px;
+		overflow: hidden;
 		* {
 			position: absolute;
 		}
 		svg {
 			z-index: 1;
-			left: 7px;
+			left: 10px;
 			top: 50%;
 			transform: translateY(-50%);
+			color: #3c3c3c;
 		}
 		input {
 			border: none;
@@ -59,11 +63,17 @@ const Container = styled.div`
 			left: 0;
 			width: 100%;
 			height: 100%;
-			padding: 2px 2px 2px 30px;
-		}
+			padding: 2px 2px 2px 35px;
 
-		&:has(:focus) {
-			border: 1.5px solid ${colors.blueDark};
+			&:disabled {
+				cursor: not-allowed;
+				background: #f5f5f5;
+			}
+		}
+	}
+	&:has(:focus) {
+		div {
+			border: 1.7px solid ${colors.blueDark};
 		}
 	}
 `;

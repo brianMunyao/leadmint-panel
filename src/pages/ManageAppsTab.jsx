@@ -4,7 +4,7 @@ import TabContainer from '../components/TabContainer';
 
 const ManageAppsTab = () => {
 	return (
-		<TabContainer>
+		<TabContainer title="Manage Apps">
 			<div>ManageAppsTab</div>
 		</TabContainer>
 	);
