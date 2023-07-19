@@ -84,13 +84,20 @@ const Container = styled.div`
 
 		.right-inner {
 			max-width: 300px;
+			height: fit-content;
 			width: 100%;
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: max-content 1fr;
+			gap: 30px;
+			height: 100%;
+
 			h2 {
 				text-align: center;
-				margin-bottom: 20px;
+			}
+			.form-con {
+				height: 100%;
+				width: 100%;
 			}
 		}
 	}

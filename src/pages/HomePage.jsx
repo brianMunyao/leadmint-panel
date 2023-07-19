@@ -15,7 +15,7 @@ import data from '../config/data.json';
 
 const HomePage = () => {
 	const location = useLocation();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 	const [separatorPos, setSeparatorPos] = useState(
 		window.innerWidth <= data.navSnapWidth ? 70 : 200
@@ -35,9 +35,9 @@ const HomePage = () => {
 		},
 	];
 
-	const logoutUser = () =>{
-		navigate('/login')
-	}
+	const logoutUser = () => {
+		navigate('/login');
+	};
 
 	useEffect(() => {
 		window.addEventListener('resize', () => {
@@ -141,7 +141,7 @@ const Container = styled.div`
 	}
 
 	@media (max-width: 400px) {
-		nav {
+		/* nav {
 			bottom: 0;
 			height: 70px;
 			left: 0;
@@ -169,7 +169,7 @@ const Container = styled.div`
 			left: 0;
 			right: 0;
 			bottom: 70px;
-		}
+		} */
 	}
 `;
 

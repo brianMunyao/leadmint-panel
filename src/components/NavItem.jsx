@@ -25,7 +25,7 @@ const NavItem = ({
 		>
 			<Icon />
 			<span className="inner">{label}</span>
-			<span className="outer">{label}</span>
+			{/* <span className="outer">{label}</span> */}
 		</Container>
 	);
 };

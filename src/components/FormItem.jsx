@@ -22,6 +22,7 @@ const FormItem = ({
 					name={name}
 					placeholder={placeholder}
 					value={value}
+					id={name}
 				/>
 			</div>
 			{error && <p className="form-error">{error}</p>}
