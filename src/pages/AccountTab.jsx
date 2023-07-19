@@ -2,12 +2,12 @@ import React from 'react';
 
 import TabContainer from '../components/TabContainer';
 
-const BillingTab = () => {
+const AccountTab = () => {
 	return (
-		<TabContainer title="Billing">
-			<div>BillingTab</div>
+		<TabContainer title="My Account">
+			<div>AccountTab</div>
 		</TabContainer>
 	);
 };
 
-export default BillingTab;
+export default AccountTab;

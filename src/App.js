@@ -7,6 +7,9 @@ import BillingTab from './pages/BillingTab';
 import DashBoardTab from './pages/DashBoardTab';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ManageAppsTab from './pages/ManageAppsTab';
+import ReportsTab from './pages/ReportsTab';
+import AccountTab from './pages/AccountTab';
 
 const router = createBrowserRouter([
 	{
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
 			{
 				path: '/billing',
 				element: <BillingTab />,
+			},
+			{
+				path: '/manage-apps',
+				element: <ManageAppsTab />,
+			},
+			{
+				path: '/reports',
+				element: <ReportsTab />,
+			},
+			{
+				path: '/account',
+				element: <AccountTab />,
 			},
 		],
 	},

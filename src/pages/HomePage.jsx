@@ -3,7 +3,9 @@ import { styled } from 'styled-components';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BiSolidDashboard } from 'react-icons/bi';
 import { BsFillFileEarmarkTextFill } from 'react-icons/bs';
-import { TbLogout2 } from 'react-icons/tb';
+import { MdOutlineAppRegistration } from 'react-icons/md';
+import { TbLogout2, TbReportAnalytics } from 'react-icons/tb';
+import { FaUserCog } from 'react-icons/fa';
 
 import DashBoardTab from './DashBoardTab';
 import leadmint from '../assets/leadmint.png';
@@ -12,6 +14,9 @@ import BillingTab from './BillingTab';
 import colors from '../config/colors';
 import NavItem from '../components/NavItem';
 import data from '../config/data.json';
+import ManageAppsTab from './ManageAppsTab';
+import ReportsTab from './ReportsTab';
+import AccountTab from './AccountTab';
 
 const HomePage = () => {
 	const location = useLocation();
@@ -28,10 +33,28 @@ const HomePage = () => {
 			to: '/',
 		},
 		{
+			Icon: MdOutlineAppRegistration,
+			navTitle: 'Manage Apps',
+			TabComponent: ManageAppsTab,
+			to: '/manage-apps',
+		},
+		{
 			Icon: BsFillFileEarmarkTextFill,
 			navTitle: 'Billing',
 			TabComponent: BillingTab,
 			to: '/billing',
+		},
+		{
+			Icon: TbReportAnalytics,
+			navTitle: 'Reports',
+			TabComponent: ReportsTab,
+			to: '/reports',
+		},
+		{
+			Icon: FaUserCog,
+			navTitle: 'My Account',
+			TabComponent: AccountTab,
+			to: '/account',
 		},
 	];
 
