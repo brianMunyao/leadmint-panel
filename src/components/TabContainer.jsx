@@ -53,7 +53,7 @@ const Container = styled.div`
 	}
 	.tab-content {
 		padding: 20px;
-		flex: 1;
+		height: 100%;
 	}
 `;
 

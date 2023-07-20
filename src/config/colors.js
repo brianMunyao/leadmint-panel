@@ -10,6 +10,7 @@ const colors = {
 	greenYellow: '#98b54c',
 
 	success: 'rgb(92, 184, 92)',
+	successLight: 'rgba(92, 184, 92, 0.2)',
 	info: 'rgb(91, 192, 222)',
 	warning: 'rgb(240, 173, 78)',
 	danger: 'rgb(217, 83, 79)',

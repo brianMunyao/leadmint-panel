@@ -23,7 +23,7 @@ const HomePage = () => {
 	const navigate = useNavigate();
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 	const [separatorPos, setSeparatorPos] = useState(
-		window.innerWidth <= data.navSnapWidth ? 70 : 200
+		window.innerWidth <= data.navSnapWidth ? 60 : 200
 	);
 	const navPages = [
 		{
@@ -65,7 +65,7 @@ const HomePage = () => {
 	useEffect(() => {
 		window.addEventListener('resize', () => {
 			setScreenWidth(window.innerWidth);
-			setSeparatorPos(window.innerWidth <= data.navSnapWidth ? 70 : 200);
+			setSeparatorPos(window.innerWidth <= data.navSnapWidth ? 60 : 200);
 		});
 	}, []);
 
@@ -107,7 +107,9 @@ const HomePage = () => {
 			</nav>
 
 			<main>
-				<Outlet />
+				<div className="inner-main">
+					<Outlet />
+				</div>
 			</main>
 		</Container>
 	);
@@ -128,6 +130,7 @@ const Container = styled.div`
 		transition: all 0.2s linear;
 	}
 	nav {
+		z-index: 999;
 		background: ${colors.white};
 		width: ${({ separatorPos }) => `${separatorPos}px`};
 		border-right: 2px solid #efefef;
@@ -140,7 +143,7 @@ const Container = styled.div`
 
 	//inner styles
 	nav {
-		padding: 30px 10px 10px;
+		padding: 30px 8px 10px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -160,6 +163,10 @@ const Container = styled.div`
 		}
 	}
 	main {
+		.inner-main {
+			position: relative;
+			height: 100%;
+		}
 		/* min-width: 500px; */
 	}
 
