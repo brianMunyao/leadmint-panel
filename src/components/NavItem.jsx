@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 import { BsQuestionCircle } from 'react-icons/bs';
 
 import colors from '../config/colors';
-import data from '../config/data.json';
 
 const NavItem = ({
 	logout = false,
@@ -11,17 +10,17 @@ const NavItem = ({
 	isActive = false,
 	label = '',
 	Icon = BsQuestionCircle,
-	screenWidth,
 	style,
+	navOpened = true,
 }) => {
 	return (
 		<Container
 			isActive={isActive}
 			title={label}
-			screenWidth={screenWidth}
 			onClick={onClick && onClick}
 			style={style}
 			logout={logout}
+			navOpened={navOpened}
 		>
 			<Icon />
 			<span className="inner">{label}</span>
@@ -37,8 +36,8 @@ const Container = styled.div`
 	border-radius: 7px;
 	display: flex;
 	align-items: center;
-	justify-content: ${({ screenWidth }) =>
-		screenWidth <= data.navSnapWidth ? 'center' : 'flex-start'};
+	justify-content: ${({ navOpened }) =>
+		!navOpened ? 'center' : 'flex-start'};
 	gap: 5px;
 	transition: all 0.2s linear;
 	color: ${({ isActive, logout }) =>
@@ -69,12 +68,12 @@ const Container = styled.div`
 	}
 
 	.inner {
-		display: ${({ screenWidth }) =>
-			screenWidth <= data.navSnapWidth ? 'none' : 'block'};
+		font-weight: 500;
+		font-size: 15px;
+		display: ${({ navOpened }) => (!navOpened ? 'none' : 'block')};
 	}
 	svg {
-		font-size: ${({ screenWidth }) =>
-			screenWidth <= data.navSnapWidth ? '22px' : 'initial'};
+		font-size: ${({ navOpened }) => (!navOpened ? '22px' : 'initial')};
 	}
 
 	@media (max-width: 400px) {

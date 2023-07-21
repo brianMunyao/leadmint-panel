@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
@@ -10,15 +11,20 @@ import RegisterPage from './pages/RegisterPage';
 import ManageAppsTab from './pages/ManageAppsTab';
 import ReportsTab from './pages/ReportsTab';
 import AccountTab from './pages/AccountTab';
+import AccountTabPage from './pages/AccountTabPage';
+import PaymentTabPage from './pages/PaymentTabPage';
+import NewLoginPage from './pages/NewLoginPage';
+import NewRegisterPage from './pages/NewRegisterPage';
+import store from './store/store';
 
 const router = createBrowserRouter([
 	{
 		path: '/register',
-		element: <RegisterPage />,
+		element: <NewRegisterPage />,
 	},
 	{
 		path: '/login',
-		element: <LoginPage />,
+		element: <NewLoginPage />,
 	},
 	{
 		path: '/',
@@ -44,13 +50,27 @@ const router = createBrowserRouter([
 			{
 				path: '/account',
 				element: <AccountTab />,
+				children: [
+					{
+						path: '/account',
+						element: <AccountTabPage />,
+					},
+					{
+						path: '/account/payment-details',
+						element: <PaymentTabPage />,
+					},
+				],
 			},
 		],
 	},
 ]);
 
 const App = () => {
-	return <RouterProvider router={router} />;
+	return (
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
+	);
 };
 
 export default App;

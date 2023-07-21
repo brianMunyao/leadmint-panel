@@ -3,12 +3,13 @@ import { styled } from 'styled-components';
 
 import colors from '../config/colors';
 
-const AppBtn = ({ secondary, children, className, onClick }) => {
+const AppBtn = ({ rounded, secondary, children, className, onClick }) => {
 	return (
 		<Container
 			secondary={secondary}
 			className={className}
 			onClick={onClick}
+			style={{ borderRadius: rounded ? 100 : 8 }}
 		>
 			{children}
 		</Container>
@@ -23,7 +24,7 @@ const Container = styled.button`
 		secondary ? colors.blueLight : colors.blueDark};
 	color: ${({ secondary }) => (secondary ? '#000' : '#fff')};
 	padding: 8px 15px;
-	border-radius: 8px;
+
 	cursor: pointer;
 	transition: all 0.2s linear;
 	width: 100%;

@@ -17,14 +17,13 @@ import data from '../config/data.json';
 import ManageAppsTab from './ManageAppsTab';
 import ReportsTab from './ReportsTab';
 import AccountTab from './AccountTab';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeNav, openNav } from '../store/navReducer';
 
 const HomePage = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-	const [separatorPos, setSeparatorPos] = useState(
-		window.innerWidth <= data.navSnapWidth ? 60 : 200
-	);
+
 	const navPages = [
 		{
 			Icon: BiSolidDashboard,
@@ -58,27 +57,27 @@ const HomePage = () => {
 		},
 	];
 
+	const dispatch = useDispatch();
+	const navOpened = useSelector((state) => state.nav.navOpened);
+
 	const logoutUser = () => {
 		navigate('/login');
 	};
 
 	useEffect(() => {
 		window.addEventListener('resize', () => {
-			setScreenWidth(window.innerWidth);
-			setSeparatorPos(window.innerWidth <= data.navSnapWidth ? 60 : 200);
+			window.innerWidth <= data.navSnapWidth
+				? dispatch(closeNav())
+				: dispatch(openNav());
 		});
 	}, []);
 
 	return (
-		<Container separatorPos={separatorPos}>
+		<Container separatorPos={navOpened ? 200 : 60}>
 			<nav>
 				<img
 					className="logo-img"
-					src={
-						window.innerWidth <= data.navSnapWidth
-							? leadmintMini
-							: leadmint
-					}
+					src={!navOpened ? leadmintMini : leadmint}
 					alt="leadmint-logo"
 				/>
 
@@ -87,10 +86,16 @@ const HomePage = () => {
 						<Link to={link.to}>
 							<NavItem
 								key={i}
-								isActive={link.to === location.pathname}
+								isActive={
+									link.to.length > 1
+										? location.pathname.includes(link.to)
+										: location.pathname.length === 1
+										? true
+										: false
+								}
 								label={link.navTitle}
 								Icon={link.Icon}
-								screenWidth={screenWidth}
+								navOpened={navOpened}
 							/>
 						</Link>
 					))}
@@ -101,7 +106,7 @@ const HomePage = () => {
 					// isActive={link.to === location.pathname}
 					label="Logout"
 					Icon={TbLogout2}
-					screenWidth={screenWidth}
+					navOpened={navOpened}
 					onClick={logoutUser}
 				/>
 			</nav>

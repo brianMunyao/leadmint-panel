@@ -1,11 +1,11 @@
 import React from 'react';
+import moment from 'moment';
 
 import TabContainer from '../components/TabContainer';
 import { IoCash } from 'react-icons/io5';
 import DashStat from '../components/DashStat';
 import { styled } from 'styled-components';
 import TopAppsTable from '../components/TopAppsTable';
-import moment from 'moment';
 
 const DashBoardTab = () => {
 	const apps = [

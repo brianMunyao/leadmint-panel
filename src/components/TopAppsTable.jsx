@@ -14,7 +14,7 @@ import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
 import AppBtn from './AppBtn';
 
-const TopAppsTable = ({ data = [] }) => {
+const TopAppsTable = ({ data = [], addAppBtn }) => {
 	const [newAppModal, setNewAppModal] = useState(false);
 
 	const openNewAppModal = () => setNewAppModal(true);
@@ -141,7 +141,9 @@ const TopAppsTable = ({ data = [] }) => {
 			<div className="top-bar">
 				<span className="title">Top Apps</span>
 
-				<AppBtn onClick={openNewAppModal}>Add New App</AppBtn>
+				{addAppBtn && (
+					<AppBtn onClick={openNewAppModal}>Add New App</AppBtn>
+				)}
 			</div>
 			<DataGrid
 				rows={data}
