@@ -236,10 +236,10 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 					padding: '5px 10px 0',
 				}}
 			>
-				<h3>Top Apps</h3>
+				<h3 style={{ marginTop: 5, marginLeft: 5 }}>Top Apps</h3>
 
 				<div>
-					<GridToolbarExport />
+					{!brief && <GridToolbarExport />}
 					{addAppBtn && (
 						<AppBtn onClick={openNewAppModal}>Add New App</AppBtn>
 					)}
@@ -286,21 +286,6 @@ const Container = styled.div`
 	width: 100%;
 	height: fit-content;
 	/* overflow-y: auto; */
-
-	.top-bar {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin: 30px 0 15px;
-
-		& > * {
-			width: fit-content;
-		}
-		.title {
-			font-size: 18px;
-			font-weight: 600;
-		}
-	}
 
 	.table-app-logo {
 		position: relative;
