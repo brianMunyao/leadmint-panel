@@ -1,61 +1,44 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import {
-	IoBusinessOutline,
-	IoCallOutline,
-	IoFlagOutline,
-	IoMailOutline,
-	IoPersonOutline,
-} from 'react-icons/io5';
 
 import AppBtn from '../components/AppBtn';
-import FormItem from '../components/FormItem';
+import FormItemAlt from '../components/FormItemAlt';
 
 const AccountTabPage = () => {
 	return (
 		<Container>
 			<div className="user-form-con">
-				<h3>User Details</h3>
+				<h3>Update User Details</h3>
 
 				<div className="form-inputs">
-					<FormItem
+					<FormItemAlt
 						name="company_name"
-						label="Company Name"
 						placeholder="Company Name"
 						value=""
-						Icon={IoBusinessOutline}
 					/>
-					<FormItem
+					<FormItemAlt
 						name="fullname"
 						value=""
 						placeholder="Enter fullname"
-						label="Fullname"
-						Icon={IoPersonOutline}
 					/>
-					<FormItem
+					<FormItemAlt
 						name="email"
 						value=""
 						placeholder="Enter your email address"
-						label="Email Address"
-						Icon={IoMailOutline}
 						inputType="email"
 						disabled
 					/>
-					<FormItem
+					<FormItemAlt
 						name="phone_no"
 						value=""
 						placeholder="Enter your phone number"
-						label="Phone No."
-						Icon={IoCallOutline}
 						inputType="tel"
 					/>
 
-					<FormItem
+					<FormItemAlt
 						name="country"
 						value=""
 						placeholder="Country"
-						label="Country"
-						Icon={IoFlagOutline}
 						inputType="country"
 					/>
 				</div>
@@ -83,7 +66,7 @@ const Container = styled.div`
 		.form-inputs {
 			display: flex;
 			flex-direction: column;
-			gap: 18px;
+			gap: 2px;
 		}
 
 		.save-changes-btn {

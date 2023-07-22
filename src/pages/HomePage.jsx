@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { styled } from 'styled-components';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BiSolidDashboard } from 'react-icons/bi';
@@ -18,7 +18,7 @@ import ManageAppsTab from './ManageAppsTab';
 import ReportsTab from './ReportsTab';
 import AccountTab from './AccountTab';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeNav, openNav } from '../store/navReducer';
+import { closeNav, openNav } from '../store/reducers/navReducer';
 
 const HomePage = () => {
 	const location = useLocation();
@@ -65,6 +65,11 @@ const HomePage = () => {
 	};
 
 	useEffect(() => {
+		window.addEventListener('load', () => {
+			window.innerWidth <= data.navSnapWidth
+				? dispatch(closeNav())
+				: dispatch(openNav());
+		});
 		window.addEventListener('resize', () => {
 			window.innerWidth <= data.navSnapWidth
 				? dispatch(closeNav())
@@ -171,6 +176,7 @@ const Container = styled.div`
 		.inner-main {
 			position: relative;
 			height: 100%;
+			overflow-y: auto;
 		}
 		/* min-width: 500px; */
 	}

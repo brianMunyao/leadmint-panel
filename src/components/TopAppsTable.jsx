@@ -1,12 +1,10 @@
 import {
 	DataGrid,
-	GridCell,
 	GridRow,
 	GridToolbarContainer,
 	GridToolbarExport,
-	GridToolbarExportContainer,
 } from '@mui/x-data-grid';
-import moment from 'moment/moment';
+import moment from 'moment';
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
 
@@ -134,6 +132,8 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			field: 'logo',
 			headerName: 'Logo',
 			disableColumnMenu: true,
+			sortable: false,
+			width: 60,
 			renderCell: (params) => {
 				return (
 					<div className="table-app-logo">

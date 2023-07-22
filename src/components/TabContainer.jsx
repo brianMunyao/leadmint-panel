@@ -5,7 +5,7 @@ import { RiMoneyCnyCircleLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 
 import person from '../assets/person.jpg';
-import { closeNav, openNav } from '../store/navReducer';
+import { closeNav, openNav } from '../store/reducers/navReducer';
 import { formatCurrency } from '../utils/funcs';
 
 const TabContainer = ({ title = '', children }) => {
@@ -64,6 +64,7 @@ const Container = styled.div`
 	grid-template-rows: 60px 1fr;
 	overflow: auto;
 	background: #f7f7f7;
+	flex: 1;
 
 	.icon {
 		display: flex;
@@ -151,7 +152,7 @@ const Container = styled.div`
 	.tab-content {
 		padding: 20px;
 		height: 100%;
-		overflow-y: auto;
+		/* overflow-y: auto; */
 	}
 `;
 

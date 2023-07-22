@@ -1,49 +1,16 @@
 import React from 'react';
-import moment from 'moment';
+import { useSelector } from 'react-redux';
+import { IoCash } from 'react-icons/io5';
 
 import TabContainer from '../components/TabContainer';
-import { IoCash } from 'react-icons/io5';
 import DashStat from '../components/DashStat';
 import { styled } from 'styled-components';
 import TopAppsTable from '../components/TopAppsTable';
 import AppBarChart from '../components/AppBarChart';
 
 const DashBoardTab = () => {
-	const apps = [
-		{
-			id: 1,
-			appID: 6093,
-			logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQBRWLfRIazYbzzE5VvvuNY0p_yQlF20ROQ&usqp=CAU',
-			name: 'SpinBuzz',
-			platform: 'Android',
-			startDate: moment('2023-10-02').toDate(),
-			earningsLastMonth: 110,
-			earningsThisMonth: 0,
-			status: 1,
-		},
-		{
-			id: 2,
-			appID: 12093,
-			logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQBRWLfRIazYbzzE5VvvuNY0p_yQlF20ROQ&usqp=CAU',
-			name: 'SpinBuzz',
-			platform: 'Android',
-			startDate: moment('2023-10-02').toDate(),
-			earningsLastMonth: 40,
-			earningsThisMonth: 0,
-			status: 0,
-		},
-		{
-			id: 3,
-			appID: 93,
-			logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQBRWLfRIazYbzzE5VvvuNY0p_yQlF20ROQ&usqp=CAU',
-			name: 'SpinBuzz',
-			platform: 'Android',
-			startDate: moment('2023-10-02').toDate(),
-			earningsLastMonth: 100,
-			earningsThisMonth: 0,
-			status: 1,
-		},
-	];
+	const apps = useSelector((state) => state.apps.apps);
+
 	return (
 		<Container>
 			<TabContainer title="Dashboard">
