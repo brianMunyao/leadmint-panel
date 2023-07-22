@@ -41,13 +41,20 @@ const appsSlice = createSlice({
 	name: 'apps',
 	initialState: {
 		apps: apps,
+		addAppModal: false,
 	},
 	reducers: {
 		setApps: (state, action) => {
 			state.apps = action.payload;
 		},
+		openAddAppModal: (state) => {
+			state.addAppModal = true;
+		},
+		closeAddAppModal: (state) => {
+			state.addAppModal = false;
+		},
 	},
 });
 
-export const { setApps } = appsSlice.actions;
+export const { setApps, openAddAppModal, closeAddAppModal } = appsSlice.actions;
 export default appsSlice.reducer;

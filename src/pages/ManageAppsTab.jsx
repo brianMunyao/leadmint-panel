@@ -8,7 +8,7 @@ const ManageAppsTab = () => {
 	const apps = useSelector((state) => state.apps.apps);
 	return (
 		<TabContainer title="Manage Apps">
-			<TopAppsTable data={apps} />
+			<TopAppsTable data={apps} addAppBtn />
 		</TabContainer>
 	);
 };

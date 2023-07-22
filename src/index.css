@@ -45,3 +45,49 @@ button {
 .MuiDataGrid-root .MuiDataGrid-cell:focus-within {
 	outline: none !important;
 }
+
+.ReactModal__Overlay {
+	z-index: 999 !important;
+	background: #00000054 !important;
+}
+
+.modal-con {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+}
+.modal-inner {
+	background: #fff;
+	width: 1;
+	padding: 25px;
+	border-radius: 12px;
+	max-width: 500px;
+	width: 100%;
+}
+.modal-inner .modal-title {
+	margin-bottom: 20px;
+}
+
+.add-app-btns {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+.add-app-btns button {
+	width: fit-content;
+}
+.go-back div {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 14px;
+	color: #114edc;
+	cursor: pointer;
+	width: fit-content;
+}
+
+.go-back div:hover {
+	text-decoration: underline;
+}

@@ -19,6 +19,8 @@ import ReportsTab from './ReportsTab';
 import AccountTab from './AccountTab';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeNav, openNav } from '../store/reducers/navReducer';
+import AddAppModal from '../components/AddAppModal';
+import { closeAddAppModal } from '../store/reducers/appsReducer';
 
 const HomePage = () => {
 	const location = useLocation();
@@ -59,6 +61,7 @@ const HomePage = () => {
 
 	const dispatch = useDispatch();
 	const navOpened = useSelector((state) => state.nav.navOpened);
+	const addAppModal = useSelector((state) => state.apps.addAppModal);
 
 	const logoutUser = () => {
 		navigate('/login');
@@ -78,50 +81,59 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<Container separatorPos={navOpened ? 200 : 60}>
-			<nav>
-				<img
-					className="logo-img"
-					src={!navOpened ? leadmintMini : leadmint}
-					alt="leadmint-logo"
-				/>
+		<>
+			<Container separatorPos={navOpened ? 200 : 60}>
+				<nav>
+					<img
+						className="logo-img"
+						src={!navOpened ? leadmintMini : leadmint}
+						alt="leadmint-logo"
+					/>
 
-				<div className="nav-links">
-					{navPages.map((link, i) => (
-						<Link to={link.to}>
-							<NavItem
-								key={i}
-								isActive={
-									link.to.length > 1
-										? location.pathname.includes(link.to)
-										: location.pathname.length === 1
-										? true
-										: false
-								}
-								label={link.navTitle}
-								Icon={link.Icon}
-								navOpened={navOpened}
-							/>
-						</Link>
-					))}
-				</div>
+					<div className="nav-links">
+						{navPages.map((link, i) => (
+							<Link to={link.to}>
+								<NavItem
+									key={i}
+									isActive={
+										link.to.length > 1
+											? location.pathname.includes(
+													link.to
+											  )
+											: location.pathname.length === 1
+											? true
+											: false
+									}
+									label={link.navTitle}
+									Icon={link.Icon}
+									navOpened={navOpened}
+								/>
+							</Link>
+						))}
+					</div>
 
-				<NavItem
-					logout
-					// isActive={link.to === location.pathname}
-					label="Logout"
-					Icon={TbLogout2}
-					navOpened={navOpened}
-					onClick={logoutUser}
-				/>
-			</nav>
+					<NavItem
+						logout
+						// isActive={link.to === location.pathname}
+						label="Logout"
+						Icon={TbLogout2}
+						navOpened={navOpened}
+						onClick={logoutUser}
+					/>
+				</nav>
 
-			<main>
-				<div className="inner-main">
-					<Outlet />
-				</div>
-			</main>
-		</Container>
+				<main>
+					<div className="inner-main">
+						<Outlet />
+					</div>
+				</main>
+			</Container>
+
+			<AddAppModal
+				isModalOpen={addAppModal}
+				closeModal={() => dispatch(closeAddAppModal())}
+			/>
+		</>
 	);
 };
 
@@ -140,10 +152,11 @@ const Container = styled.div`
 		transition: all 0.2s linear;
 	}
 	nav {
-		z-index: 999;
+		z-index: 10;
 		background: ${colors.white};
 		width: ${({ separatorPos }) => `${separatorPos}px`};
 		/* border-right: 2px solid #efefef; */
+		overflow: hidden;
 	}
 	main {
 		background: #fafafa;

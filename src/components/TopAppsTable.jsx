@@ -7,16 +7,17 @@ import {
 import moment from 'moment';
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
 import AppBtn from './AppBtn';
+import AppModal from './AppModal';
+import AddAppModal from './AddAppModal';
+import { openAddAppModal } from '../store/reducers/appsReducer';
 
 const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
-	const [newAppModal, setNewAppModal] = useState(false);
-
-	const openNewAppModal = () => setNewAppModal(true);
-	const closeNewAppModal = () => setNewAppModal(false);
+	const dispatch = useDispatch();
 
 	const columnsBrief = [
 		{
@@ -241,7 +242,12 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 				<div>
 					{!brief && <GridToolbarExport />}
 					{addAppBtn && (
-						<AppBtn onClick={openNewAppModal}>Add New App</AppBtn>
+						<AppBtn
+							onClick={() => dispatch(openAddAppModal())}
+							className="add-app-btn"
+						>
+							Add New App
+						</AppBtn>
 					)}
 				</div>
 			</GridToolbarContainer>
@@ -298,6 +304,13 @@ const Container = styled.div`
 			transform: translateY(-50%);
 			left: 0;
 		}
+	}
+	.add-app-btn {
+		padding: 8px 10px;
+		border-radius: 4px;
+		width: fit-content;
+		font-size: 14px;
+		margin-left: 10px;
 	}
 	.edit-btn {
 		background: dodgerblue;
