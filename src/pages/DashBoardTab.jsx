@@ -13,7 +13,7 @@ const DashBoardTab = () => {
 		{
 			id: 1,
 			appID: 6093,
-			logo: 'https://png2.cleanpng.com/sh/a829b83ddd21d84e67e786291205ae63/L0KzQYm3VMA5N5txfZH0aYP2gLBuTfdwd5hxfZ91b3fyPcb1igRmbF54jNN9ZYOwdLbqgfwub5D0f95uLYDvhcS0VfFkQZNnfKo8MEmzcYG1WMc4OmU2Tas6NUK2QYi3UsY1OWo9UZD5bne=/kisspng-google-logo-united-states-decal-google-plus-5ac9bbd83090a0.8772415915231702641989.png',
+			logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQBRWLfRIazYbzzE5VvvuNY0p_yQlF20ROQ&usqp=CAU',
 			name: 'SpinBuzz',
 			platform: 'Android',
 			startDate: moment('2023-10-02').toDate(),
@@ -24,7 +24,7 @@ const DashBoardTab = () => {
 		{
 			id: 2,
 			appID: 12093,
-			logo: 'https://png2.cleanpng.com/sh/a829b83ddd21d84e67e786291205ae63/L0KzQYm3VMA5N5txfZH0aYP2gLBuTfdwd5hxfZ91b3fyPcb1igRmbF54jNN9ZYOwdLbqgfwub5D0f95uLYDvhcS0VfFkQZNnfKo8MEmzcYG1WMc4OmU2Tas6NUK2QYi3UsY1OWo9UZD5bne=/kisspng-google-logo-united-states-decal-google-plus-5ac9bbd83090a0.8772415915231702641989.png',
+			logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQBRWLfRIazYbzzE5VvvuNY0p_yQlF20ROQ&usqp=CAU',
 			name: 'SpinBuzz',
 			platform: 'Android',
 			startDate: moment('2023-10-02').toDate(),
@@ -35,7 +35,7 @@ const DashBoardTab = () => {
 		{
 			id: 3,
 			appID: 93,
-			logo: 'https://png2.cleanpng.com/sh/a829b83ddd21d84e67e786291205ae63/L0KzQYm3VMA5N5txfZH0aYP2gLBuTfdwd5hxfZ91b3fyPcb1igRmbF54jNN9ZYOwdLbqgfwub5D0f95uLYDvhcS0VfFkQZNnfKo8MEmzcYG1WMc4OmU2Tas6NUK2QYi3UsY1OWo9UZD5bne=/kisspng-google-logo-united-states-decal-google-plus-5ac9bbd83090a0.8772415915231702641989.png',
+			logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFQBRWLfRIazYbzzE5VvvuNY0p_yQlF20ROQ&usqp=CAU',
 			name: 'SpinBuzz',
 			platform: 'Android',
 			startDate: moment('2023-10-02').toDate(),

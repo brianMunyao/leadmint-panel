@@ -28,18 +28,20 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			type: 'number',
 			width: 80,
 		},
-		// {
-		// 	field: 'logo',
-		// 	headerName: 'Logo',
-		// 	disableColumnMenu: true,
-		// 	renderCell: (params) => {
-		// 		return (
-		// 			<div className="table-app-logo">
-		// 				<img src={params.row.logo} alt={params.row.name} />
-		// 			</div>
-		// 		);
-		// 	},
-		// },
+		{
+			field: 'logo',
+			headerName: 'Logo',
+			disableColumnMenu: true,
+			sortable: false,
+			width: 60,
+			renderCell: (params) => {
+				return (
+					<div className="table-app-logo">
+						<img src={params.row.logo} alt={params.row.name} />
+					</div>
+				);
+			},
+		},
 		{
 			field: 'name',
 			headerName: 'Name',
@@ -61,7 +63,7 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 		// },
 		{
 			field: 'earningsLastMonth',
-			headerName: 'Earnings Last Month',
+			headerName: 'Last Month Earnings',
 			width: 120,
 			type: 'number',
 			disableColumnMenu: true,
@@ -71,7 +73,7 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 		},
 		{
 			field: 'earningsThisMonth',
-			headerName: 'Earnings This Month',
+			headerName: 'This Month Earnings',
 			width: 120,
 			type: 'number',
 			disableColumnMenu: true,
@@ -98,26 +100,26 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 		// 		);
 		// 	},
 		// },
-		{
-			field: 'edit',
-			headerName: '',
-			sortable: false,
-			width: 65,
-			disableColumnMenu: true,
-			disableClickEventBubbling: true,
-			renderCell: (params) => {
-				const onClick = (e) => {
-					const currentRow = params.row;
-					return alert(JSON.stringify(currentRow, null, 4));
-				};
+		// {
+		// 	field: 'edit',
+		// 	headerName: '',
+		// 	sortable: false,
+		// 	width: 65,
+		// 	disableColumnMenu: true,
+		// 	disableClickEventBubbling: true,
+		// 	renderCell: (params) => {
+		// 		const onClick = (e) => {
+		// 			const currentRow = params.row;
+		// 			return alert(JSON.stringify(currentRow, null, 4));
+		// 		};
 
-				return (
-					<button className="edit-btn" onClick={onClick}>
-						Edit
-					</button>
-				);
-			},
-		},
+		// 		return (
+		// 			<button className="edit-btn" onClick={onClick}>
+		// 				Edit
+		// 			</button>
+		// 		);
+		// 	},
+		// },
 	];
 
 	const columns = [
@@ -305,7 +307,7 @@ const Container = styled.div`
 		width: 100%;
 		height: 100%;
 		img {
-			width: 100%;
+			height: 70%;
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
