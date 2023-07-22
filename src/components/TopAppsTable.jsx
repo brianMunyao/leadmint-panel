@@ -14,11 +14,111 @@ import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
 import AppBtn from './AppBtn';
 
-const TopAppsTable = ({ data = [], addAppBtn }) => {
+const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 	const [newAppModal, setNewAppModal] = useState(false);
 
 	const openNewAppModal = () => setNewAppModal(true);
 	const closeNewAppModal = () => setNewAppModal(false);
+
+	const columnsBrief = [
+		{
+			field: 'appID',
+			headerName: 'App ID',
+			disableColumnMenu: true,
+			type: 'number',
+			width: 80,
+		},
+		// {
+		// 	field: 'logo',
+		// 	headerName: 'Logo',
+		// 	disableColumnMenu: true,
+		// 	renderCell: (params) => {
+		// 		return (
+		// 			<div className="table-app-logo">
+		// 				<img src={params.row.logo} alt={params.row.name} />
+		// 			</div>
+		// 		);
+		// 	},
+		// },
+		{
+			field: 'name',
+			headerName: 'Name',
+			disableColumnMenu: true,
+		},
+		// {
+		// 	field: 'platform',
+		// 	headerName: 'Platform',
+		// 	disableColumnMenu: true,
+		// },
+		// {
+		// 	field: 'startDate',
+		// 	headerName: 'Start Date',
+		// 	type: 'date',
+		// 	disableColumnMenu: true,
+		// 	renderCell: (params) => {
+		// 		return moment(params.row.startDate).format('MMM DD, YYYY');
+		// 	},
+		// },
+		{
+			field: 'earningsLastMonth',
+			headerName: 'Earnings Last Month',
+			width: 120,
+			type: 'number',
+			disableColumnMenu: true,
+			renderCell: (params) => {
+				return formatCurrency(params.row.earningsLastMonth);
+			},
+		},
+		{
+			field: 'earningsThisMonth',
+			headerName: 'Earnings This Month',
+			width: 120,
+			type: 'number',
+			disableColumnMenu: true,
+			renderCell: (params) => {
+				return formatCurrency(params.row.earningsThisMonth);
+			},
+		},
+		// {
+		// 	field: 'status',
+		// 	headerName: 'Status',
+		// 	width: 100,
+		// 	disableColumnMenu: true,
+		// 	renderCell: (params) => {
+		// 		return (
+		// 			<span
+		// 				className={`app-status ${
+		// 					params.row.status === 0
+		// 						? 'status-red'
+		// 						: 'status-green'
+		// 				}`}
+		// 			>
+		// 				{params.row.status === 0 ? 'Inactive' : 'Active'}
+		// 			</span>
+		// 		);
+		// 	},
+		// },
+		{
+			field: 'edit',
+			headerName: '',
+			sortable: false,
+			width: 65,
+			disableColumnMenu: true,
+			disableClickEventBubbling: true,
+			renderCell: (params) => {
+				const onClick = (e) => {
+					const currentRow = params.row;
+					return alert(JSON.stringify(currentRow, null, 4));
+				};
+
+				return (
+					<button className="edit-btn" onClick={onClick}>
+						Edit
+					</button>
+				);
+			},
+		},
+	];
 
 	const columns = [
 		{
@@ -126,8 +226,22 @@ const TopAppsTable = ({ data = [], addAppBtn }) => {
 
 	const CustomToolbar = () => {
 		return (
-			<GridToolbarContainer>
-				<GridToolbarExport />
+			<GridToolbarContainer
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					padding: '5px 10px 0',
+				}}
+			>
+				<h3>Top Apps</h3>
+
+				<div>
+					<GridToolbarExport />
+					{addAppBtn && (
+						<AppBtn onClick={openNewAppModal}>Add New App</AppBtn>
+					)}
+				</div>
 			</GridToolbarContainer>
 		);
 	};
@@ -138,16 +252,9 @@ const TopAppsTable = ({ data = [], addAppBtn }) => {
 
 	return (
 		<Container>
-			<div className="top-bar">
-				<span className="title">Top Apps</span>
-
-				{addAppBtn && (
-					<AppBtn onClick={openNewAppModal}>Add New App</AppBtn>
-				)}
-			</div>
 			<DataGrid
 				rows={data}
-				columns={columns}
+				columns={brief ? columnsBrief : columns}
 				disableRowSelectionOnClick
 				initialState={
 					{
@@ -163,14 +270,20 @@ const TopAppsTable = ({ data = [], addAppBtn }) => {
 					toolbar: CustomToolbar,
 					noRowsOverlay: EmptyRowsMessage,
 				}}
+				hideFooter={brief}
 			/>
 		</Container>
 	);
 };
 
 const Container = styled.div`
+	/* background: #fff;
+	padding: 20px;
+	box-shadow: 2px 1px 4px rgba(240, 240, 240, 0.7);
+	border-radius: 10px; */
 	width: 100%;
-	overflow-y: auto;
+	height: fit-content;
+	/* overflow-y: auto; */
 
 	.top-bar {
 		display: flex;

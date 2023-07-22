@@ -138,7 +138,7 @@ const Container = styled.div`
 		z-index: 999;
 		background: ${colors.white};
 		width: ${({ separatorPos }) => `${separatorPos}px`};
-		border-right: 2px solid #efefef;
+		/* border-right: 2px solid #efefef; */
 	}
 	main {
 		background: #fafafa;

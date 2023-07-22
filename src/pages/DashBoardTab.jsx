@@ -6,6 +6,7 @@ import { IoCash } from 'react-icons/io5';
 import DashStat from '../components/DashStat';
 import { styled } from 'styled-components';
 import TopAppsTable from '../components/TopAppsTable';
+import AppBarChart from '../components/AppBarChart';
 
 const DashBoardTab = () => {
 	const apps = [
@@ -64,7 +65,10 @@ const DashBoardTab = () => {
 					/>
 				</div>
 
-				<TopAppsTable data={apps} />
+				<div className="apps-chart">
+					<TopAppsTable brief data={apps} />
+					<AppBarChart />
+				</div>
 			</TabContainer>
 		</Container>
 	);
@@ -76,6 +80,12 @@ const Container = styled.div`
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 20px;
+	}
+	.apps-chart {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: 20px;
+		margin: 20px 0;
 	}
 `;
 
