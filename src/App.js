@@ -6,8 +6,8 @@ import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import BillingTab from './pages/BillingTab';
 import DashBoardTab from './pages/DashBoardTab';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+// import LoginPage from './pages/LoginPage';
+// import RegisterPage from './pages/RegisterPage';
 import ManageAppsTab from './pages/ManageAppsTab';
 import ReportsTab from './pages/ReportsTab';
 import AccountTab from './pages/AccountTab';
@@ -16,6 +16,7 @@ import PaymentTabPage from './pages/PaymentTabPage';
 import NewLoginPage from './pages/NewLoginPage';
 import NewRegisterPage from './pages/NewRegisterPage';
 import store from './store/store';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 	{
 		path: '/login',
 		element: <NewLoginPage />,
+	},
+	{
+		path: '/reset-password',
+		element: <ResetPasswordPage />,
 	},
 	{
 		path: '/',

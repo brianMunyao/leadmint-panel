@@ -44,7 +44,7 @@ const weekData = [
 
 const DashBoardTab = () => {
 	const apps = useSelector((state) => state.apps.apps);
-	const [pageError, setPageError] = useState(
+	const [pageError] = useState(
 		'Due to bank holiday in india all the payment will be cleared on Monday'
 	);
 

@@ -91,3 +91,8 @@ button {
 .go-back div:hover {
 	text-decoration: underline;
 }
+
+.form-error {
+	color: rgb(222, 49, 18);
+	font-size: 15px;
+}

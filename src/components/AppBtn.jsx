@@ -29,7 +29,7 @@ const Container = styled.button`
 	gap: 6px;
 	border: none;
 	background: ${({ secondary, negative }) =>
-		negative ? '#fff' : secondary ? colors.blueLight : colors.blueDark};
+		negative ? '#fff' : secondary ? colors.blueLight : colors.primaryDark};
 	color: ${({ secondary, negative }) =>
 		negative ? colors.blueDark : secondary ? '#000' : '#fff'};
 	border: ${({ negative }) =>

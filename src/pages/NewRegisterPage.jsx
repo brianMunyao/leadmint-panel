@@ -5,7 +5,7 @@ import { IoArrowBack } from 'react-icons/io5';
 
 import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
-import leadmint from '../assets/leadmint.png';
+// import leadmint from '../assets/leadmint.png';
 import colors from '../config/colors';
 
 const NewRegisterPage = () => {
@@ -16,28 +16,30 @@ const NewRegisterPage = () => {
 
 	return (
 		<Container>
+			<div></div>
 			<div className="inner">
-				<img src={leadmint} alt="leadmint-logo" />
+				{/* <img src={leadmint} alt="leadmint-logo" /> */}
 
 				<div className="form-con">
-					<p className="alt">
-						Already have an account? <Link to="/login">Login</Link>
+					{page === 1 && <h2 className="form-title">Sign Up</h2>}
+					<p className="form-subtitle">
+						{page === 1
+							? 'to your LeadMint Account'
+							: 'Provide few more details to complete Sign Up'}
 					</p>
-
-					<h3 className="form-title">Register</h3>
 
 					<div className="form-inputs">
 						{page === 1 && (
 							<div className="form-page form-page1">
 								<FormItemAlt
-									name="company_name"
-									placeholder="Company Name"
+									name="name"
+									placeholder="ENter Your Name"
 									value=""
 								/>
 								<FormItemAlt
 									inputType="email"
 									name="email"
-									placeholder="Enter your email address"
+									placeholder="Enter your Email ID"
 									value=""
 								/>
 
@@ -50,7 +52,7 @@ const NewRegisterPage = () => {
 								<FormItemAlt
 									inputType="password"
 									name="password2"
-									placeholder="Enter your password again"
+									placeholder="Re-enter your password"
 									value=""
 								/>
 
@@ -67,28 +69,53 @@ const NewRegisterPage = () => {
 								</div>
 
 								<FormItemAlt
-									name="country"
-									placeholder="Country"
+									name="companyName"
+									placeholder="Company Name"
 									value=""
 								/>
 								<FormItemAlt
-									name="address"
-									placeholder="Address"
+									name="address1"
+									placeholder="Enter your Address Line 1"
 									value=""
 								/>
+								<FormItemAlt
+									name="address2"
+									placeholder="Enter your Address Line 2"
+									value=""
+								/>
+								<div className="two-inputs">
+									<FormItemAlt
+										name="city"
+										placeholder="Enter your City"
+										value=""
+									/>
+									<FormItemAlt
+										name="pincode"
+										placeholder="Enter your Pincode"
+										value=""
+									/>
+								</div>
 								<FormItemAlt
 									inputType="tel"
-									name="mobile_number"
-									placeholder="Mobile Number"
+									name="taxID"
+									placeholder="Enter your Tax ID"
 									value=""
 								/>
 
-								<AppBtn rounded>Register</AppBtn>
+								<AppBtn>Complete Sign Up</AppBtn>
 							</div>
 						)}
 					</div>
 				</div>
+
+				<p className="alt">
+					Already have an account?{' '}
+					<Link to="/login">Sign In Now</Link>
+				</p>
 			</div>
+			<p className="footer">
+				© 2023 LeadMint Technology Private Limited, All Right Reserved
+			</p>
 		</Container>
 	);
 };
@@ -96,12 +123,17 @@ const NewRegisterPage = () => {
 const Container = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 30px;
 	height: 100vh;
 	min-height: 500px;
 	background: #f7f7f7;
+	padding: 10px;
+	overflow: auto;
 
 	.inner {
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -112,7 +144,8 @@ const Container = styled.div`
 			width: auto;
 		}
 		.form-con {
-			width: 330px;
+			width: 100%;
+			max-width: 400px;
 			background: #fff;
 			padding: 40px;
 			box-shadow: 4px 2px 10px #dededea0;
@@ -120,20 +153,28 @@ const Container = styled.div`
 			display: flex;
 			flex-direction: column;
 
-			.alt,
+			.form-inputs {
+				.form-page {
+					display: flex;
+					gap: 15px;
+					flex-direction: column;
+				}
+			}
+
 			.forgot {
 				text-align: center;
 				color: grey;
-			}
-			.alt {
-				margin-bottom: 20px;
-			}
-			.forgot {
 				margin-top: 20px;
 			}
-
+			.two-inputs {
+				display: flex;
+				gap: 10px;
+			}
 			.form-title {
-				text-align: center;
+				/* text-align: center; */
+				margin-bottom: 5px;
+			}
+			.form-subtitle {
 				margin-bottom: 10px;
 			}
 			.login-btn {
@@ -156,6 +197,15 @@ const Container = styled.div`
 				}
 			}
 		}
+		.alt {
+			text-align: center;
+			color: grey;
+			margin-top: 20px;
+		}
+	}
+	.footer {
+		font-size: 15px;
+		color: grey;
 	}
 `;
 

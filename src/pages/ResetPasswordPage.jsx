@@ -1,21 +1,24 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { styled } from 'styled-components';
 
-// import leadmint from '../assets/leadmint.png';
 import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
 
-const NewLoginPage = () => {
+const ResetPasswordPage = () => {
 	return (
 		<Container>
+			{' '}
 			<div></div>
 			<div className="inner">
 				{/* <img src={leadmint} alt="leadmint-logo" /> */}
 
 				<div className="form-con">
-					<h2 className="form-title">Sign In</h2>
-					<p className="form-subtitle">to your LeadMint Account</p>
+					<h2 className="form-title">Forgot Password</h2>
+					<p className="form-subtitle">
+						Enter your registered email address tp change your Zoho
+						account password
+					</p>
 					<div className="form-inputs">
 						<FormItemAlt
 							name="email"
@@ -24,20 +27,13 @@ const NewLoginPage = () => {
 							inputType="email"
 							value=""
 						/>
-						<FormItemAlt
-							name="password"
-							error=""
-							placeholder="Enter your password"
-							inputType="password"
-							value=""
-						/>
 					</div>
 
 					<AppBtn
-						className="login-btn"
+						className="reset-btn"
 						onClick={() => console.log('login')}
 					>
-						Login
+						Reset
 					</AppBtn>
 
 					<p className="forgot">
@@ -50,7 +46,6 @@ const NewLoginPage = () => {
 					<Link to="/register">Sign Up Now</Link>
 				</p>
 			</div>
-
 			<p className="footer">
 				© 2023 LeadMint Technology Private Limited, All Right Reserved
 			</p>
@@ -110,8 +105,8 @@ const Container = styled.div`
 			.form-subtitle {
 				margin-bottom: 10px;
 			}
-			.login-btn {
-				margin-top: 10px;
+			.reset-btn {
+				margin-top: 15px;
 			}
 		}
 		.alt {
@@ -126,4 +121,4 @@ const Container = styled.div`
 	}
 `;
 
-export default NewLoginPage;
+export default ResetPasswordPage;
