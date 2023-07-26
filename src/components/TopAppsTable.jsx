@@ -25,100 +25,45 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			headerName: 'App ID',
 			disableColumnMenu: true,
 			type: 'number',
-			width: 80,
-		},
-		{
-			field: 'logo',
-			headerName: 'Logo',
-			disableColumnMenu: true,
-			sortable: false,
-			width: 60,
-			renderCell: (params) => {
-				return (
-					<div className="table-app-logo">
-						<img src={params.row.logo} alt={params.row.name} />
-					</div>
-				);
-			},
+			width: 70,
 		},
 		{
 			field: 'name',
 			headerName: 'Name',
+			width: 90,
 			disableColumnMenu: true,
 		},
-		// {
-		// 	field: 'platform',
-		// 	headerName: 'Platform',
-		// 	disableColumnMenu: true,
-		// },
-		// {
-		// 	field: 'startDate',
-		// 	headerName: 'Start Date',
-		// 	type: 'date',
-		// 	disableColumnMenu: true,
-		// 	renderCell: (params) => {
-		// 		return moment(params.row.startDate).format('MMM DD, YYYY');
-		// 	},
-		// },
 		{
-			field: 'earningsLastMonth',
-			headerName: 'Last Month Earnings',
-			width: 120,
-			type: 'number',
+			field: 'revenue',
+			headerName: 'Revenue',
+			width: 100,
 			disableColumnMenu: true,
+			type: 'number',
 			renderCell: (params) => {
-				return formatCurrency(params.row.earningsLastMonth);
+				return formatCurrency(params.row.revenue);
 			},
 		},
 		{
-			field: 'earningsThisMonth',
-			headerName: 'This Month Earnings',
-			width: 120,
+			field: 'click',
+			headerName: 'Click',
+			width: 70,
+			disableColumnMenu: true,
+			type: 'number',
+		},
+		{
+			field: 'conversion',
+			headerName: 'Conversion',
+			// width: 100,
 			type: 'number',
 			disableColumnMenu: true,
-			renderCell: (params) => {
-				return formatCurrency(params.row.earningsThisMonth);
-			},
 		},
-		// {
-		// 	field: 'status',
-		// 	headerName: 'Status',
-		// 	width: 100,
-		// 	disableColumnMenu: true,
-		// 	renderCell: (params) => {
-		// 		return (
-		// 			<span
-		// 				className={`app-status ${
-		// 					params.row.status === 0
-		// 						? 'status-red'
-		// 						: 'status-green'
-		// 				}`}
-		// 			>
-		// 				{params.row.status === 0 ? 'Inactive' : 'Active'}
-		// 			</span>
-		// 		);
-		// 	},
-		// },
-		// {
-		// 	field: 'edit',
-		// 	headerName: '',
-		// 	sortable: false,
-		// 	width: 65,
-		// 	disableColumnMenu: true,
-		// 	disableClickEventBubbling: true,
-		// 	renderCell: (params) => {
-		// 		const onClick = (e) => {
-		// 			const currentRow = params.row;
-		// 			return alert(JSON.stringify(currentRow, null, 4));
-		// 		};
-
-		// 		return (
-		// 			<button className="edit-btn" onClick={onClick}>
-		// 				Edit
-		// 			</button>
-		// 		);
-		// 	},
-		// },
+		{
+			field: 'users',
+			headerName: 'Users',
+			width: 65,
+			type: 'number',
+			disableColumnMenu: true,
+		},
 	];
 
 	const columns = [
@@ -130,76 +75,37 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			width: 80,
 		},
 		{
-			field: 'logo',
-			headerName: 'Logo',
-			disableColumnMenu: true,
-			sortable: false,
-			width: 60,
-			renderCell: (params) => {
-				return (
-					<div className="table-app-logo">
-						<img src={params.row.logo} alt={params.row.name} />
-					</div>
-				);
-			},
-		},
-		{
 			field: 'name',
 			headerName: 'Name',
 			disableColumnMenu: true,
 		},
 		{
-			field: 'platform',
-			headerName: 'Platform',
+			field: 'revenue',
+			headerName: 'Revenue',
 			disableColumnMenu: true,
-		},
-		{
-			field: 'startDate',
-			headerName: 'Start Date',
-			type: 'date',
-			disableColumnMenu: true,
+			type: 'number',
 			renderCell: (params) => {
-				return moment(params.row.startDate).format('MMM DD, YYYY');
+				return formatCurrency(params.row.revenue);
 			},
 		},
 		{
-			field: 'earningsLastMonth',
-			headerName: 'Earnings Last Month',
-			width: 120,
+			field: 'click',
+			headerName: 'Click',
+			disableColumnMenu: true,
+			type: 'number',
+		},
+		{
+			field: 'conversion',
+			headerName: 'Conversion',
 			type: 'number',
 			disableColumnMenu: true,
-			renderCell: (params) => {
-				return formatCurrency(params.row.earningsLastMonth);
-			},
 		},
 		{
-			field: 'earningsThisMonth',
-			headerName: 'Earnings This Month',
-			width: 120,
+			field: 'users',
+			headerName: 'Users',
+			// width: 120,
 			type: 'number',
 			disableColumnMenu: true,
-			renderCell: (params) => {
-				return formatCurrency(params.row.earningsThisMonth);
-			},
-		},
-		{
-			field: 'status',
-			headerName: 'Status',
-			width: 100,
-			disableColumnMenu: true,
-			renderCell: (params) => {
-				return (
-					<span
-						className={`app-status ${
-							params.row.status === 0
-								? 'status-red'
-								: 'status-green'
-						}`}
-					>
-						{params.row.status === 0 ? 'Inactive' : 'Active'}
-					</span>
-				);
-			},
 		},
 		{
 			field: 'edit',

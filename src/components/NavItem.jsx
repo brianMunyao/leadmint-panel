@@ -41,7 +41,7 @@ const Container = styled.div`
 	gap: 5px;
 	transition: all 0.2s linear;
 	color: ${({ isActive, logout }) =>
-		isActive ? '#fff' : logout ? colors.danger : '#3d3d3d'};
+		isActive ? '#fff' : logout ? colors.danger : '#fff'};
 	background: ${({ isActive, logout }) =>
 		isActive
 			? logout
@@ -49,9 +49,9 @@ const Container = styled.div`
 				: colors.blueDark
 			: logout
 			? colors.dangerLight
-			: '#fff'};
+			: '#fff0'};
 
-	margin-top: ${({ logout }) => (logout ? 'auto' : 'initial')};
+	margin-top: ${({ logout }) => (logout ? '20px' : 'initial')};
 
 	&:hover {
 		background: ${({ isActive, logout }) =>
@@ -68,8 +68,9 @@ const Container = styled.div`
 	}
 
 	.inner {
-		font-weight: 500;
+		font-weight: 300;
 		font-size: 15px;
+		letter-spacing: 0.2px;
 		display: ${({ navOpened }) => (!navOpened ? 'none' : 'block')};
 	}
 	svg {

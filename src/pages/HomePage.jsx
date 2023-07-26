@@ -8,7 +8,7 @@ import { TbLogout2, TbReportAnalytics } from 'react-icons/tb';
 import { FaUserCog } from 'react-icons/fa';
 
 import DashBoardTab from './DashBoardTab';
-import leadmint from '../assets/leadmint.png';
+import leadmint from '../assets/leadmint-white.webp';
 import leadmintMini from '../assets/leadmint-mini.png';
 import BillingTab from './BillingTab';
 import colors from '../config/colors';
@@ -153,7 +153,7 @@ const Container = styled.div`
 	}
 	nav {
 		z-index: 10;
-		background: ${colors.white};
+		background: #071f4b;
 		width: ${({ separatorPos }) => `${separatorPos}px`};
 		/* border-right: 2px solid #efefef; */
 		overflow: hidden;

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import person from '../assets/person.jpg';
 import { closeNav, openNav } from '../store/reducers/navReducer';
 import { formatCurrency } from '../utils/funcs';
+import { IoSettingsOutline } from 'react-icons/io5';
 
 const TabContainer = ({ title = '', children }) => {
 	const navOpened = useSelector((state) => state.nav.navOpened);
@@ -35,7 +36,7 @@ const TabContainer = ({ title = '', children }) => {
 				</div>
 
 				<div className="right-top">
-					<div className="earnings">
+					{/* <div className="earnings">
 						<div className="icon earnings-icon">
 							<RiMoneyCnyCircleLine />
 						</div>
@@ -48,7 +49,21 @@ const TabContainer = ({ title = '', children }) => {
 
 					<div className="user-icon">
 						<img src={person} alt="person" />
+					</div> */}
+					<div className="amount-con">
+						<p className="subtitle">{formatCurrency(10000)}</p>
+						<p className="title">This Month</p>
 					</div>
+					<div className="separator"></div>
+					<div className="amount-con">
+						<p className="subtitle">{formatCurrency(10000)}</p>
+						<p className="title">Last Month</p>
+					</div>
+					<div className="separator"></div>
+					<span className="user-email">risahvraina@gmail.com</span>
+					<span className="settings-icon">
+						<IoSettingsOutline />
+					</span>
 				</div>
 			</div>
 
@@ -106,9 +121,16 @@ const Container = styled.div`
 		.right-top {
 			display: flex;
 			align-items: center;
-			gap: 20px;
+			gap: 14px;
 
-			.earnings {
+			.separator {
+				height: 20px;
+				width: 2px;
+				background: #cecece;
+				border-radius: 10px;
+			}
+
+			/* .earnings {
 				display: flex;
 				align-items: center;
 				gap: 10px;
@@ -133,9 +155,9 @@ const Container = styled.div`
 						color: #d2b201;
 					}
 				}
-			}
+			} */
 
-			.user-icon {
+			/* .user-icon {
 				width: 40px;
 				height: 40px;
 				border-radius: 20px;
@@ -145,6 +167,29 @@ const Container = styled.div`
 				img {
 					height: 100%;
 					width: 100%;
+				}
+			} */
+			.amount-con {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				.title {
+					font-size: 13px;
+					font-weight: 400;
+					opacity: 0.7;
+				}
+				.subtitle {
+					font-size: 18px;
+					font-weight: 600;
+				}
+			}
+			.settings-icon {
+				svg {
+					cursor: pointer;
+					font-size: 22px;
+					&:hover {
+						transform: rotate(10deg);
+					}
 				}
 			}
 		}
