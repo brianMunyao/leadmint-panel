@@ -36,9 +36,9 @@ const ResetPasswordPage = () => {
 						Reset
 					</AppBtn>
 
-					<p className="forgot">
+					{/* <p className="forgot">
 						<Link to="/reset-password">Forgot password?</Link>
-					</p>
+					</p> */}
 				</div>
 
 				<p className="alt">
