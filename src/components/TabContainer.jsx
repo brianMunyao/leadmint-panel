@@ -1,10 +1,8 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from 'react-icons/ai';
-import { RiMoneyCnyCircleLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 
-import person from '../assets/person.jpg';
 import { closeNav, openNav } from '../store/reducers/navReducer';
 import { formatCurrency } from '../utils/funcs';
 import { IoSettingsOutline } from 'react-icons/io5';
@@ -36,20 +34,6 @@ const TabContainer = ({ title = '', children }) => {
 				</div>
 
 				<div className="right-top">
-					{/* <div className="earnings">
-						<div className="icon earnings-icon">
-							<RiMoneyCnyCircleLine />
-						</div>
-
-						<div>
-							<p className="subtitle">{formatCurrency(10000)}</p>
-							<p className="title">Last Week Earnings</p>
-						</div>
-					</div>
-
-					<div className="user-icon">
-						<img src={person} alt="person" />
-					</div> */}
 					<div className="amount-con">
 						<p className="subtitle">{formatCurrency(10000)}</p>
 						<p className="title">This Month</p>
@@ -73,9 +57,11 @@ const TabContainer = ({ title = '', children }) => {
 };
 
 const Container = styled.div`
+	position: relative;
+	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: 100%;
 	grid-template-rows: 60px 1fr;
 	overflow: auto;
 	background: #f7f7f7;
@@ -97,6 +83,11 @@ const Container = styled.div`
 	}
 
 	.tab-topbar {
+		position: sticky;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
 		background: #fff;
 		display: flex;
 		align-items: center;
