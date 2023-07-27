@@ -4,21 +4,20 @@ import {
 	GridToolbarContainer,
 	GridToolbarExport,
 } from '@mui/x-data-grid';
-import moment from 'moment';
-import React, { useState } from 'react';
+// import moment from 'moment';
+import React from 'react';
 import { styled } from 'styled-components';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
 import AppBtn from './AppBtn';
-import AppModal from './AppModal';
-import AddAppModal from './AddAppModal';
-import { openAddAppModal } from '../store/reducers/appsReducer';
+import { Link } from 'react-router-dom';
+// import AppModal from './AppModal';
+// import AddAppModal from './AddAppModal';
+// import { openAddAppModal } from '../store/reducers/appsReducer';
 
 const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
-	const dispatch = useDispatch();
-
 	const columnsBrief = [
 		{
 			field: 'appID',
@@ -72,7 +71,7 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			headerName: 'App ID',
 			disableColumnMenu: true,
 			type: 'number',
-			width: 80,
+			width: 100,
 		},
 		{
 			field: 'name',
@@ -93,17 +92,19 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			headerName: 'Click',
 			disableColumnMenu: true,
 			type: 'number',
+			width: 130,
 		},
 		{
 			field: 'conversion',
 			headerName: 'Conversion',
 			type: 'number',
 			disableColumnMenu: true,
+			width: 130,
 		},
 		{
 			field: 'users',
 			headerName: 'Users',
-			// width: 120,
+			width: 120,
 			type: 'number',
 			disableColumnMenu: true,
 		},
@@ -111,19 +112,19 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 			field: 'edit',
 			headerName: '',
 			sortable: false,
-			width: 65,
+			width: 100,
 			disableColumnMenu: true,
 			disableClickEventBubbling: true,
 			renderCell: (params) => {
-				const onClick = (e) => {
-					const currentRow = params.row;
-					return alert(JSON.stringify(currentRow, null, 4));
-				};
+				// const onClick = (e) => {
+				// 	const currentRow = params.row;
+				// 	return alert(JSON.stringify(currentRow, null, 4));
+				// };
 
 				return (
-					<button className="edit-btn" onClick={onClick}>
-						Edit
-					</button>
+					<Link to={`/manage-apps/edit-app/${params.row.id}`}>
+						<button className="edit-btn">Edit</button>
+					</Link>
 				);
 			},
 		},
@@ -148,12 +149,9 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 				<div>
 					{!brief && <GridToolbarExport />}
 					{addAppBtn && (
-						<AppBtn
-							onClick={() => dispatch(openAddAppModal())}
-							className="add-app-btn"
-						>
-							Add New App
-						</AppBtn>
+						<Link to={'/manage-apps/add-app'}>
+							<AppBtn className="add-app-btn">Add New App</AppBtn>
+						</Link>
 					)}
 				</div>
 			</GridToolbarContainer>

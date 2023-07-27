@@ -11,6 +11,7 @@ const AppBtn = ({
 	className,
 	onClick,
 	btnType = 'button',
+	style,
 }) => {
 	return (
 		<Container
@@ -19,7 +20,7 @@ const AppBtn = ({
 			secondary={secondary}
 			className={className}
 			onClick={onClick}
-			style={{ borderRadius: rounded ? 100 : 8 }}
+			style={{ borderRadius: rounded ? 100 : 8, ...style }}
 		>
 			{children}
 		</Container>

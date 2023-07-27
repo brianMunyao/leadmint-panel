@@ -17,6 +17,9 @@ import NewLoginPage from './pages/NewLoginPage';
 import NewRegisterPage from './pages/NewRegisterPage';
 import store from './store/store';
 import ResetPasswordPage from './pages/ResetPasswordPage';
+import AddAppForm from './pages/AddAppForm';
+import AppsListPage from './pages/AppsListPage';
+import UpdateAppForm from './pages/UpdateAppForm';
 
 const router = createBrowserRouter([
 	{
@@ -47,6 +50,20 @@ const router = createBrowserRouter([
 			{
 				path: '/manage-apps',
 				element: <ManageAppsTab />,
+				children: [
+					{
+						path: '/manage-apps',
+						element: <AppsListPage />,
+					},
+					{
+						path: '/manage-apps/add-app',
+						element: <AddAppForm />,
+					},
+					{
+						path: '/manage-apps/edit-app/:id',
+						element: <UpdateAppForm />,
+					},
+				],
 			},
 			{
 				path: '/reports',
