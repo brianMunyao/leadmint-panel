@@ -1,55 +1,79 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
 
 const ResetPasswordPage = () => {
+	const handlePasswordReset = (email) => {
+		// TODO: handle password rest here
+		console.log(email);
+	};
+
 	return (
-		<Container>
-			{' '}
-			<div></div>
-			<div className="inner">
-				{/* <img src={leadmint} alt="leadmint-logo" /> */}
+		<Formik
+			initialValues={{ email: '' }}
+			validationSchema={Yup.object({
+				email: Yup.string()
+					.email('Invalid email')
+					.required('Email is required'),
+			})}
+			onSubmit={(values) => {
+				handlePasswordReset(values.email);
+			}}
+		>
+			{({
+				errors,
+				values,
+				touched,
+				handleBlur,
+				handleChange,
+				handleSubmit,
+			}) => (
+				<form onSubmit={handleSubmit}>
+					<Container>
+						<div></div>
+						<div className="inner">
+							<div className="form-con">
+								<h2 className="form-title">Forgot Password</h2>
+								<p className="form-subtitle">
+									Enter your registered email address to
+									change your Zoho account password
+								</p>
+								<div className="form-inputs">
+									<FormItemAlt
+										name="email"
+										inputType="email"
+										placeholder="Enter your Email ID"
+										value={values.email}
+										error={errors.email}
+										onChange={handleChange('email')}
+										onBlur={handleBlur('email')}
+										touched={touched.email}
+									/>
+								</div>
 
-				<div className="form-con">
-					<h2 className="form-title">Forgot Password</h2>
-					<p className="form-subtitle">
-						Enter your registered email address tp change your Zoho
-						account password
-					</p>
-					<div className="form-inputs">
-						<FormItemAlt
-							name="email"
-							error=""
-							placeholder="Enter your Email ID"
-							inputType="email"
-							value=""
-						/>
-					</div>
+								<AppBtn btnType="submit" className="reset-btn">
+									Reset
+								</AppBtn>
+							</div>
 
-					<AppBtn
-						className="reset-btn"
-						onClick={() => console.log('login')}
-					>
-						Reset
-					</AppBtn>
-
-					{/* <p className="forgot">
-						<Link to="/reset-password">Forgot password?</Link>
-					</p> */}
-				</div>
-
-				<p className="alt">
-					Don't have a LeadMint account?{' '}
-					<Link to="/register">Sign Up Now</Link>
-				</p>
-			</div>
-			<p className="footer">
-				© 2023 LeadMint Technology Private Limited, All Right Reserved
-			</p>
-		</Container>
+							<p className="alt">
+								Don't have a LeadMint account?{' '}
+								<Link to="/register">Sign Up Now</Link>
+							</p>
+						</div>
+						<p className="footer">
+							© 2023 LeadMint Technology Private Limited, All
+							Right Reserved
+						</p>
+					</Container>
+				</form>
+			)}
+		</Formik>
 	);
 };
 

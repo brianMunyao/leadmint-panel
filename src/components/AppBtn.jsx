@@ -10,9 +10,11 @@ const AppBtn = ({
 	children,
 	className,
 	onClick,
+	btnType = 'button',
 }) => {
 	return (
 		<Container
+			type={btnType}
 			negative={negative}
 			secondary={secondary}
 			className={className}

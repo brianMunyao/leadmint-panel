@@ -7,12 +7,14 @@ const FormItemAlt = ({
 	inputType = 'text',
 	placeholder,
 	value,
-	Icon,
 	error,
 	disabled,
+	onChange,
+	onBlur,
+	touched,
 }) => {
 	return (
-		<Container error={error}>
+		<Container error={error && touched}>
 			{label && <label htmlFor={name}>{label}</label>}
 			<input
 				type={inputType}
@@ -21,8 +23,10 @@ const FormItemAlt = ({
 				value={value}
 				id={name}
 				disabled={disabled}
+				onChange={onChange}
+				onBlur={onBlur}
 			/>
-			{error && <p className="form-error">{error}</p>}
+			{error && touched && <p className="form-error">{error}</p>}
 		</Container>
 	);
 };
