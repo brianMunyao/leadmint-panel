@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 // import AddAppModal from './AddAppModal';
 // import { openAddAppModal } from '../store/reducers/appsReducer';
 
-const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
+const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
 	const columnsBrief = [
 		{
 			field: 'appID',
@@ -144,7 +144,7 @@ const TopAppsTable = ({ data = [], addAppBtn, brief }) => {
 					padding: '5px 10px 0',
 				}}
 			>
-				<h3 style={{ marginTop: 5, marginLeft: 5 }}>Top Apps</h3>
+				<h3 style={{ marginTop: 5, marginLeft: 5 }}>{title}</h3>
 
 				<div>
 					{!brief && <GridToolbarExport />}

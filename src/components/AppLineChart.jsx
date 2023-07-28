@@ -27,7 +27,7 @@ const AppLineChart = ({ data, margin }) => {
 						bottom: 5,
 					}}
 				>
-					<CartesianGrid strokeDasharray="3 3" />
+					{/* <CartesianGrid horizontal="3" /> */}
 					<XAxis dataKey="name" />
 					<YAxis />
 					<Tooltip />

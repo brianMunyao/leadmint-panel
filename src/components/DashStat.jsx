@@ -37,6 +37,7 @@ const Container = styled.div`
 	/* flex-direction: column; */
 	gap: 5px;
 	overflow: hidden;
+	max-width: 300px;
 	/* border: 1px solid #ebebeb; */
 
 	/* &:hover {

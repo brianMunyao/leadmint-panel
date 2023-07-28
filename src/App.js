@@ -45,7 +45,7 @@ const router = createBrowserRouter([
 				element: <DashBoardTab />,
 			},
 			{
-				path: '/billing',
+				path: '/payments',
 				element: <BillingTab />,
 			},
 			{

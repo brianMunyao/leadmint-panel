@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import TabContainer from '../components/TabContainer';
-import MiniTabs from '../components/MiniTabs';
+// import MiniTabs from '../components/MiniTabs';
 
 const AccountTab = () => {
 	const location = useLocation();

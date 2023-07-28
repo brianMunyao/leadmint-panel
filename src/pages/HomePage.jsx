@@ -41,9 +41,9 @@ const HomePage = () => {
 		},
 		{
 			Icon: BsFillFileEarmarkTextFill,
-			navTitle: 'Billing',
+			navTitle: 'Payments',
 			TabComponent: BillingTab,
-			to: '/billing',
+			to: '/payments',
 		},
 		{
 			Icon: TbReportAnalytics,

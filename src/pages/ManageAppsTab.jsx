@@ -8,7 +8,7 @@ import TopAppsTable from '../components/TopAppsTable';
 const ManageAppsTab = () => {
 	const [addAppForm, setAddAppForm] = useState(false);
 	const openAddAppForm = () => setAddAppForm(true);
-	const closeAddAppForm = () => setAddAppForm(FontFaceSetLoadEvent);
+	const closeAddAppForm = () => setAddAppForm(false);
 
 	const apps = useSelector((state) => state.apps.apps);
 	return (
