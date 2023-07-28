@@ -88,7 +88,9 @@ const DashBoardTab = () => {
 				<div className="apps-chart">
 					{/* <AppBarChart /> */}
 					<AppLineChart data={weekData} />
-					<TopAppsTable brief data={apps} />
+					<div className="table">
+						<TopAppsTable brief data={apps} />
+					</div>
 				</div>
 			</TabContainer>
 		</Container>
@@ -115,6 +117,13 @@ const Container = styled.div`
 		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 		gap: 20px;
 		margin: 30px 0 20px;
+
+		.table {
+			background: #fff;
+			box-shadow: 2px 1px 4px rgba(240, 240, 240, 0.7);
+			border-radius: 10px;
+			overflow: hidden;
+		}
 	}
 `;
 

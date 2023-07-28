@@ -1,8 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-import colors from '../config/colors';
-
 const DashStat = ({
 	title = '',
 	value = '',
@@ -39,7 +37,7 @@ const Container = styled.div`
 	/* flex-direction: column; */
 	gap: 5px;
 	overflow: hidden;
-	border: 1px solid #ebebeb;
+	/* border: 1px solid #ebebeb; */
 
 	/* &:hover {
 		& > svg {

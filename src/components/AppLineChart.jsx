@@ -53,7 +53,7 @@ const Container = styled.div`
 	box-shadow: 2px 1px 4px rgba(240, 240, 240, 0.7);
 	border-radius: 10px;
 	width: 100%;
-	border: 1px solid #ebebeb;
+	/* border: 1px solid #ebebeb; */
 
 	.title {
 		margin-bottom: 15px;
