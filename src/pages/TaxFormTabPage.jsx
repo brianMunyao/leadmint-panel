@@ -6,45 +6,33 @@ import AppBtn from '../components/AppBtn';
 import FormItem from '../components/FormItem';
 import colors from '../config/colors';
 
-const PaymentTabPage = () => {
+const TaxFormTabPage = () => {
 	return (
 		<Container>
 			{/* <div className="user-form-con"> */}
-			<h3>Billing Details</h3>
+			<h3>Tax Details</h3>
 
 			<div className="form-inputs">
 				<FormItem
-					label="Beneficiary Name"
-					name="beneficiary_name"
-					placeholder="Enter your Account Name"
+					label="Tax ID"
+					name="taxID"
+					placeholder="GST Number"
 					value=""
 				/>
 				<FormItem
-					label="Account Number"
-					name="accountName"
+					label="Address"
+					name="address"
+					value=""
+					placeholder="Enter your address"
+					error=""
+				/>
+				<FormItem
+					label="Pin Code"
+					name="pincode"
 					inputType="tel"
 					value=""
-					placeholder="Enter your account number"
-				/>
-				<FormItem
-					label="IFSC CODE"
-					name="ifscCode"
-					inputType="tel"
-					value=""
-					placeholder="Enter your IFSC CODE"
-				/>
-				<FormItem
-					label="SWIFT CODE"
-					name="swiftCode"
-					inputType="tel"
-					value=""
-					placeholder="Enter your Swift Code"
-				/>
-				<FormItem
-					label="Bank Name"
-					name="bankName"
-					value=""
-					placeholder="Enter your Bank Name"
+					placeholder="Pin Code"
+					error=""
 				/>
 
 				<FormItem
@@ -130,4 +118,4 @@ const Container = styled.div`
 	}
 `;
 
-export default PaymentTabPage;
+export default TaxFormTabPage;

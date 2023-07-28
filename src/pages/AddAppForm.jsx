@@ -5,8 +5,8 @@ import * as Yup from 'yup';
 
 import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
-import { IoArrowBackOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+// import { IoArrowBackOutline } from 'react-icons/io5';
+// import { Link } from 'react-router-dom';
 import colors from '../config/colors';
 
 const AddAppForm = () => {

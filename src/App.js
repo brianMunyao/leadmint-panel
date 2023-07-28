@@ -20,6 +20,7 @@ import ResetPasswordPage from './pages/ResetPasswordPage';
 import AddAppForm from './pages/AddAppForm';
 import AppsListPage from './pages/AppsListPage';
 import UpdateAppForm from './pages/UpdateAppForm';
+import TaxFormTabPage from './pages/TaxFormTabPage';
 
 const router = createBrowserRouter([
 	{
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
 					{
 						path: '/account/payment-details',
 						element: <PaymentTabPage />,
+					},
+					{
+						path: '/account/tax-form',
+						element: <TaxFormTabPage />,
 					},
 				],
 			},

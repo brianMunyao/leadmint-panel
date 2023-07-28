@@ -15,11 +15,13 @@ a {
 	width: fit-content;
 }
 
-input {
+input,
+select {
 	font-size: 15px;
 }
 
-input:focus {
+input:focus,
+select:focus {
 	outline: none;
 }
 
