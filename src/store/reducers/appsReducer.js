@@ -35,6 +35,7 @@ const appsSlice = createSlice({
 	initialState: {
 		apps: apps,
 		addAppModalOpen: false,
+		filterModalOpen: false,
 	},
 	reducers: {
 		setApps: (state, action) => {
@@ -46,8 +47,20 @@ const appsSlice = createSlice({
 		closeAddAppModal: (state) => {
 			state.addAppModalOpen = false;
 		},
+		openFilterModal: (state) => {
+			state.filterModalOpen = true;
+		},
+		closeFilterModal: (state) => {
+			state.filterModalOpen = false;
+		},
 	},
 });
 
-export const { setApps, openAddAppModal, closeAddAppModal } = appsSlice.actions;
+export const {
+	setApps,
+	openAddAppModal,
+	closeAddAppModal,
+	openFilterModal,
+	closeFilterModal,
+} = appsSlice.actions;
 export default appsSlice.reducer;

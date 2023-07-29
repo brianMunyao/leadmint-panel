@@ -4,7 +4,7 @@ import {
 	Line,
 	XAxis,
 	YAxis,
-	CartesianGrid,
+	// CartesianGrid,
 	Tooltip,
 	Legend,
 	ResponsiveContainer,
@@ -17,8 +17,6 @@ const AppLineChart = ({ data, margin }) => {
 			<h4 className="title">Earnings for Past 7 days</h4>
 			<ResponsiveContainer width="95%" height={280}>
 				<LineChart
-					// width={500}
-					// height={300}
 					data={data}
 					margin={{
 						top: 5,
@@ -27,7 +25,6 @@ const AppLineChart = ({ data, margin }) => {
 						bottom: 5,
 					}}
 				>
-					{/* <CartesianGrid horizontal="3" /> */}
 					<XAxis dataKey="name" />
 					<YAxis />
 					<Tooltip />
@@ -36,10 +33,9 @@ const AppLineChart = ({ data, margin }) => {
 						type="monotone"
 						dataKey="amount"
 						stroke="#8884d8"
-						strokeWidth={2}
+						strokeWidth={3}
 						activeDot={{ r: 8 }}
 					/>
-					{/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
 				</LineChart>
 			</ResponsiveContainer>
 		</Container>
@@ -53,11 +49,9 @@ const Container = styled.div`
 	box-shadow: 2px 1px 4px rgba(240, 240, 240, 0.7);
 	border-radius: 10px;
 	width: 100%;
-	/* border: 1px solid #ebebeb; */
 
 	.title {
 		margin-bottom: 15px;
-		/* color: #a1a1a1; */
 	}
 
 	@media (max-width: 530px) {

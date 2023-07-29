@@ -3,8 +3,10 @@ import React from 'react';
 import TabContainer from '../components/TabContainer';
 import AppLineChart from '../components/AppLineChart';
 import TopAppsTable from '../components/TopAppsTable';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from 'styled-components';
+import AppBtn from '../components/AppBtn';
+import { openFilterModal } from '../store/reducers/appsReducer';
 
 const data = [
 	{
@@ -39,11 +41,20 @@ const data = [
 
 const ReportsTab = () => {
 	const apps = useSelector((state) => state.apps.apps);
+	const dispatch = useDispatch();
 
 	return (
 		<Container>
 			<TabContainer title="Reports">
 				<div className="reports-inner">
+					<div className="filter-btn-con">
+						<AppBtn
+							style={{ width: 100 }}
+							onClick={() => dispatch(openFilterModal())}
+						>
+							Filter
+						</AppBtn>
+					</div>
 					<AppLineChart data={data} />
 
 					<TopAppsTable data={apps} />
@@ -59,6 +70,11 @@ const Container = styled.div`
 		display: flex;
 		flex-direction: column;
 		gap: 30px;
+
+		.filter-btn-con {
+			display: flex;
+			justify-content: flex-end;
+		}
 	}
 `;
 

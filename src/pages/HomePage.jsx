@@ -11,7 +11,7 @@ import DashBoardTab from './DashBoardTab';
 import leadmint from '../assets/leadmint-white.webp';
 import leadmintMini from '../assets/leadmint-mini.png';
 import BillingTab from './BillingTab';
-import colors from '../config/colors';
+// import colors from '../config/colors';
 import NavItem from '../components/NavItem';
 import data from '../config/data.json';
 import ManageAppsTab from './ManageAppsTab';
@@ -20,7 +20,8 @@ import AccountTab from './AccountTab';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeNav, openNav } from '../store/reducers/navReducer';
 import AddAppModal from '../components/AddAppModal';
-import { closeAddAppModal } from '../store/reducers/appsReducer';
+// import { closeAddAppModal } from '../store/reducers/appsReducer';
+import FilterModal from '../components/FilterModal';
 
 const HomePage = () => {
 	const location = useLocation();
@@ -61,7 +62,7 @@ const HomePage = () => {
 
 	const dispatch = useDispatch();
 	const navOpened = useSelector((state) => state.nav.navOpened);
-	const addAppModal = useSelector((state) => state.apps.addAppModal);
+	// const addAppModal = useSelector((state) => state.apps.addAppModal);
 
 	const logoutUser = () => {
 		navigate('/login');
@@ -130,6 +131,7 @@ const HomePage = () => {
 			</Container>
 
 			<AddAppModal />
+			<FilterModal />
 		</>
 	);
 };
