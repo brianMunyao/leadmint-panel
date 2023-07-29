@@ -1,5 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import AppBtn from '../components/AppBtn';
 import FormItem from '../components/FormItem';
@@ -7,76 +9,129 @@ import colors from '../config/colors';
 
 const PaymentTabPage = () => {
 	return (
-		<Container>
-			{/* <div className="user-form-con"> */}
-			<h3>Billing Details</h3>
+		<Formik
+			initialValues={{
+				beneficiaryName: '',
+				accountName: '',
+				ifscCode: '',
+				swiftCode: '',
+				bankName: '',
+				country: '',
+			}}
+			validationSchema={Yup.object({
+				beneficiaryName: Yup.string().required('Name is required'),
+				accountName: Yup.string().required('Account Name is required'),
+				ifscCode: Yup.string().required('Code is required'),
+				swiftCode: Yup.string().required('Code is required'),
+				bankName: Yup.string().required('Bank Name is required'),
+				country: Yup.string().required('Country is required'),
+			})}
+			onSubmit={(values) => {
+				// TODO: Handle update here
+			}}
+		>
+			{({
+				errors,
+				values,
+				touched,
+				handleBlur,
+				handleChange,
+				handleSubmit,
+			}) => (
+				<form onSubmit={handleSubmit}>
+					<Container>
+						<h3>Billing Details</h3>
 
-			<div className="form-inputs">
-				<FormItem
-					label="Beneficiary Name"
-					name="beneficiary_name"
-					placeholder="Enter your Account Name"
-					value=""
-				/>
-				<FormItem
-					label="Account Number"
-					name="accountName"
-					inputType="tel"
-					value=""
-					placeholder="Enter your account number"
-				/>
-				<FormItem
-					label="IFSC CODE"
-					name="ifscCode"
-					inputType="tel"
-					value=""
-					placeholder="Enter your IFSC CODE"
-				/>
-				<FormItem
-					label="SWIFT CODE"
-					name="swiftCode"
-					inputType="tel"
-					value=""
-					placeholder="Enter your Swift Code"
-				/>
-				<FormItem
-					label="Bank Name"
-					name="bankName"
-					value=""
-					placeholder="Enter your Bank Name"
-				/>
+						<div className="form-inputs">
+							<FormItem
+								label="Beneficiary Name"
+								name="beneficiaryName"
+								placeholder="Enter your Account Name"
+								value={values.beneficiaryName}
+								error={errors.beneficiaryName}
+								onChange={handleChange('beneficiaryName')}
+								onBlur={handleBlur('beneficiaryName')}
+								touched={touched.beneficiaryName}
+							/>
+							<FormItem
+								label="Account Number"
+								name="accountName"
+								inputType="tel"
+								placeholder="Enter your account number"
+								value={values.accountName}
+								error={errors.accountName}
+								onChange={handleChange('accountName')}
+								onBlur={handleBlur('accountName')}
+								touched={touched.accountName}
+							/>
+							<FormItem
+								label="IFSC CODE"
+								name="ifscCode"
+								inputType="tel"
+								placeholder="Enter your IFSC CODE"
+								value={values.ifscCode}
+								error={errors.ifscCode}
+								onChange={handleChange('ifscCode')}
+								onBlur={handleBlur('ifscCode')}
+								touched={touched.ifscCode}
+							/>
+							<FormItem
+								label="SWIFT CODE"
+								name="swiftCode"
+								inputType="tel"
+								placeholder="Enter your Swift Code"
+								value={values.swiftCode}
+								error={errors.swiftCode}
+								onChange={handleChange('swiftCode')}
+								onBlur={handleBlur('swiftCode')}
+								touched={touched.swiftCode}
+							/>
+							<FormItem
+								label="Bank Name"
+								name="bankName"
+								placeholder="Enter your Bank Name"
+								value={values.bankName}
+								error={errors.bankName}
+								onChange={handleChange('bankName')}
+								onBlur={handleBlur('bankName')}
+								touched={touched.bankName}
+							/>
 
-				<FormItem
-					label="Country"
-					name="country"
-					value=""
-					placeholder="Enter your country"
-					select={[{ val: 'India', label: 'India' }]}
-				/>
-			</div>
+							<FormItem
+								label="Country"
+								name="country"
+								placeholder="Enter your country"
+								select={[{ val: 'India', label: 'India' }]}
+								value={values.country}
+								error={errors.country}
+								onChange={handleChange('country')}
+								onBlur={handleBlur('country')}
+								touched={touched.country}
+							/>
+						</div>
 
-			<AppBtn className="save-changes-btn">Save Changes</AppBtn>
-			{/* </div> */}
-		</Container>
+						<AppBtn btnType="submit" className="save-changes-btn">
+							Save Changes
+						</AppBtn>
+					</Container>
+				</form>
+			)}
+		</Formik>
 	);
 };
 
 const Container = styled.div`
-	/* .user-form-con { */
 	background: #fff;
-	/* max-width: 400px; */
 	width: 100%;
 	padding: 25px;
 	border-radius: 15px;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	/* box-shadow: 2px 2px 10px rgba(230, 230, 230, 0.2); */
 
 	.form-inputs {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		/* flex-direction: column; */
 		gap: 20px;
 	}
 
@@ -84,7 +139,6 @@ const Container = styled.div`
 		max-width: fit-content;
 		margin-left: auto;
 	}
-	/* } */
 
 	.select-con {
 		display: flex;
@@ -97,8 +151,6 @@ const Container = styled.div`
 			position: relative;
 			width: 100%;
 			height: 42px;
-			/* border: 1.5px solid
-				${({ error }) => (error ? 'rgba(217, 84, 79, 0.58)' : '#dfdfdf')}; */
 			border-radius: 6px;
 			overflow: hidden;
 			* {
@@ -112,8 +164,6 @@ const Container = styled.div`
 				width: 100%;
 				height: 100%;
 				padding: 2px 10px;
-				/* background: ${({ error }) =>
-					error ? 'rgba(217, 84, 79, 0.158)' : '#fbfbfb'}; */
 
 				&:disabled {
 					cursor: not-allowed;

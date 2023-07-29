@@ -3,7 +3,6 @@ import { styled } from 'styled-components';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import TabContainer from '../components/TabContainer';
-// import MiniTabs from '../components/MiniTabs';
 
 const AccountTab = () => {
 	const location = useLocation();
@@ -11,16 +10,6 @@ const AccountTab = () => {
 		<Container>
 			<TabContainer title="My Account">
 				<div className="tab-inner">
-					{/* <MiniTabs
-						tabs={[
-							{ name: 'Account Details', to: '/account' },
-							{
-								name: 'Payment Details',
-								to: '/account/payment-details',
-							},
-						]}
-						style={{ marginBottom: 20 }}
-					/> */}
 					<div className="tab-inner-top">
 						{[
 							{ name: 'Account Details', to: '/account' },

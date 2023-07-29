@@ -21,17 +21,6 @@ const AddAppForm = () => {
 
 	return (
 		<>
-			{/* <Link
-				to={-1}
-				style={{
-					display: 'flex',
-					alignItems: 'center',
-					gap: 5,
-					marginBottom: 20,
-				}}
-			>
-				<IoArrowBackOutline /> <span>Back</span>
-			</Link> */}
 			<Container>
 				<div className="inner">
 					<div className="form-top">

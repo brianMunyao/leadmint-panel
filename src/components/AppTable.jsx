@@ -1,11 +1,8 @@
 import { DataGrid } from '@mui/x-data-grid';
 import React from 'react';
 import { styled } from 'styled-components';
-// import { Link } from 'react-router-dom';
 
-import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
-// import AppBtn from './AppBtn';
 import TableToolbar from './TableToolbar';
 
 const defaultColumns = [

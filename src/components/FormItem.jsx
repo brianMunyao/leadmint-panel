@@ -1,5 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { IoInformationCircleOutline } from 'react-icons/io5';
+import { Tooltip } from 'react-tooltip';
 
 import colors from '../config/colors';
 
@@ -17,10 +19,23 @@ const FormItem = ({
 	touched,
 
 	select,
+	tooltip,
 }) => {
 	return select ? (
 		<Container error={error && touched}>
-			<label htmlFor={name}>{label}</label>
+			<label htmlFor={name}>
+				{label}
+				{tooltip && (
+					<>
+						<Tooltip id={`tooltip-${name}`} />
+
+						<IoInformationCircleOutline
+							data-tooltip-id={`tooltip-${name}`}
+							data-tooltip-content={tooltip}
+						/>
+					</>
+				)}
+			</label>
 			<div>
 				<select
 					name={name}
@@ -43,7 +58,19 @@ const FormItem = ({
 		</Container>
 	) : (
 		<Container error={error && touched}>
-			<label htmlFor={name}>{label}</label>
+			<label htmlFor={name}>
+				{label}
+				{tooltip && (
+					<>
+						<Tooltip id={`tooltip-${name}`} />
+
+						<IoInformationCircleOutline
+							data-tooltip-id={`tooltip-${name}`}
+							data-tooltip-content={tooltip}
+						/>
+					</>
+				)}
+			</label>
 			<div>
 				{Icon && <Icon />}
 				<input
@@ -68,8 +95,11 @@ const Container = styled.div`
 	gap: 4px;
 	label {
 		font-size: 14.5px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
 	}
-	div {
+	& > div {
 		position: relative;
 		width: 100%;
 		height: 42px;
@@ -106,7 +136,7 @@ const Container = styled.div`
 		}
 	}
 	&:has(:focus) {
-		div {
+		& > div {
 			border: 1.7px solid ${colors.blueDark};
 		}
 	}

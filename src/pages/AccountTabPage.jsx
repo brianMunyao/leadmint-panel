@@ -1,5 +1,7 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
 import AppBtn from '../components/AppBtn';
 import FormItem from '../components/FormItem';
@@ -7,70 +9,133 @@ import colors from '../config/colors';
 
 const AccountTabPage = () => {
 	return (
-		<Container>
-			{/* <div className="user-form-con"> */}
-			<h3>Update User Details</h3>
+		<Formik
+			initialValues={{
+				appName: '',
+				email: '',
+				accountType: '',
+				companyName: '',
+				address: '',
+				pincode: '',
+				country: '',
+			}}
+			validationSchema={Yup.object({
+				appName: Yup.string().required('App Name is required'),
+				email: Yup.string().required('Email is required'),
+				accountType: Yup.string().required('Account is required'),
+				companyName: Yup.string().required('Company Name is required'),
+				address: Yup.string().required('Address is required'),
+				pincode: Yup.string().required('Pincode is required'),
+				country: Yup.string().required('Country is required'),
+			})}
+			onSubmit={(values) => {
+				// setAppData(values);
+				// moveToPage2();
+			}}
+		>
+			{({
+				errors,
+				values,
+				touched,
+				handleBlur,
+				handleChange,
+				handleSubmit,
+			}) => (
+				<form onSubmit={handleSubmit}>
+					<Container>
+						<h3>Update User Details</h3>
 
-			<div className="form-inputs">
-				<FormItem
-					label="Name"
-					name="app_name"
-					placeholder="Enter App Name"
-					value=""
-				/>
-				<FormItem
-					label="Email"
-					name="email"
-					value=""
-					placeholder="Enter your email"
-				/>
+						<div className="form-inputs">
+							<FormItem
+								label="Name"
+								name="appName"
+								placeholder="Enter App Name"
+								tooltip="Name"
+								value={values.appName}
+								error={errors.appName}
+								onChange={handleChange('appName')}
+								onBlur={handleBlur('appName')}
+								touched={touched.appName}
+							/>
+							<FormItem
+								label="Email"
+								name="email"
+								placeholder="Enter your email"
+								value={values.email}
+								error={errors.email}
+								onChange={handleChange('email')}
+								onBlur={handleBlur('email')}
+								touched={touched.email}
+							/>
 
-				<FormItem
-					label="Account Type"
-					name="accountType"
-					value=""
-					placeholder="Enter your account type"
-					select={[
-						{ val: 'Float', label: 'Float' },
-						{ val: 'Float2', label: 'Float2' },
-					]}
-				/>
+							<FormItem
+								label="Account Type"
+								name="accountType"
+								placeholder="Enter your account type"
+								select={[
+									{ val: 'Float', label: 'Float' },
+									{ val: 'Float2', label: 'Float2' },
+								]}
+								value={values.accountType}
+								error={errors.accountType}
+								onChange={handleChange('accountType')}
+								onBlur={handleBlur('accountType')}
+								touched={touched.accountType}
+							/>
 
-				<FormItem
-					label="Company Name"
-					name="companyName"
-					value=""
-					placeholder="Enter your company name"
-				/>
+							<FormItem
+								label="Company Name"
+								name="companyName"
+								placeholder="Enter your company name"
+								value={values.companyName}
+								error={errors.companyName}
+								onChange={handleChange('companyName')}
+								onBlur={handleBlur('companyName')}
+								touched={touched.companyName}
+							/>
 
-				<FormItem
-					label="Address"
-					name="address"
-					value=""
-					placeholder="Enter your address"
-					error=""
-				/>
+							<FormItem
+								label="Address"
+								name="address"
+								placeholder="Enter your address"
+								value={values.address}
+								error={errors.address}
+								onChange={handleChange('address')}
+								onBlur={handleBlur('address')}
+								touched={touched.address}
+							/>
 
-				<FormItem
-					label="Pin Code"
-					name="pincode"
-					inputType="tel"
-					value=""
-					placeholder="Pin Code"
-					error=""
-				/>
-				<FormItem
-					label="Country"
-					name="country"
-					value=""
-					placeholder="Enter your country"
-					select={[{ val: 'India', label: 'India' }]}
-				/>
-			</div>
+							<FormItem
+								label="Pin Code"
+								name="pincode"
+								inputType="tel"
+								placeholder="Pin Code"
+								value={values.pincode}
+								error={errors.pincode}
+								onChange={handleChange('pincode')}
+								onBlur={handleBlur('pincode')}
+								touched={touched.pincode}
+							/>
+							<FormItem
+								label="Country"
+								name="country"
+								placeholder="Enter your country"
+								select={[{ val: 'India', label: 'India' }]}
+								value={values.country}
+								error={errors.country}
+								onChange={handleChange('country')}
+								onBlur={handleBlur('country')}
+								touched={touched.country}
+							/>
+						</div>
 
-			<AppBtn className="save-changes-btn">Save Changes</AppBtn>
-			{/* </div> */}
-		</Container>
+						<AppBtn btnType="submit" className="save-changes-btn">
+							Save Changes
+						</AppBtn>
+					</Container>
+				</form>
+			)}
+		</Formik>
 	);
 };
 
@@ -110,8 +175,6 @@ const Container = styled.div`
 			position: relative;
 			width: 100%;
 			height: 42px;
-			/* border: 1.5px solid
-				${({ error }) => (error ? 'rgba(217, 84, 79, 0.58)' : '#dfdfdf')}; */
 			border-radius: 6px;
 			overflow: hidden;
 			* {
@@ -125,9 +188,6 @@ const Container = styled.div`
 				width: 100%;
 				height: 100%;
 				padding: 2px 10px;
-				/* background: ${({ error }) =>
-					error ? 'rgba(217, 84, 79, 0.158)' : '#fbfbfb'}; */
-
 				&:disabled {
 					cursor: not-allowed;
 					background: #f5f5f5;

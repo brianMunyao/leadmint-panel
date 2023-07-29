@@ -1,71 +1,111 @@
 import React from 'react';
 import { styled } from 'styled-components';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 
-// import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
 import FormItem from '../components/FormItem';
 import colors from '../config/colors';
 
 const TaxFormTabPage = () => {
 	return (
-		<Container>
-			{/* <div className="user-form-con"> */}
-			<h3>Tax Details</h3>
+		<Formik
+			initialValues={{
+				taxID: '',
+				address: '',
+				pincode: '',
+				country: '',
+			}}
+			validationSchema={Yup.object({
+				taxID: Yup.string().required('Tax ID is required'),
+				address: Yup.string().required('Address is required'),
+				pincode: Yup.string().required('Code is required'),
+				country: Yup.string().required('Country is required'),
+			})}
+			onSubmit={(values) => {
+				// TODO: Handle update here
+			}}
+		>
+			{({
+				errors,
+				values,
+				touched,
+				handleBlur,
+				handleChange,
+				handleSubmit,
+			}) => (
+				<form onSubmit={handleSubmit}>
+					<Container>
+						<h3>Tax Details</h3>
 
-			<div className="form-inputs">
-				<FormItem
-					label="Tax ID"
-					name="taxID"
-					placeholder="GST Number"
-					value=""
-				/>
-				<FormItem
-					label="Address"
-					name="address"
-					value=""
-					placeholder="Enter your address"
-					error=""
-				/>
-				<FormItem
-					label="Pin Code"
-					name="pincode"
-					inputType="tel"
-					value=""
-					placeholder="Pin Code"
-					error=""
-				/>
+						<div className="form-inputs">
+							<FormItem
+								label="Tax ID"
+								name="taxID"
+								placeholder="GST Number"
+								value={values.taxID}
+								error={errors.taxID}
+								onChange={handleChange('taxID')}
+								onBlur={handleBlur('taxID')}
+								touched={touched.taxID}
+							/>
+							<FormItem
+								label="Address"
+								name="address"
+								placeholder="Enter your address"
+								value={values.address}
+								error={errors.address}
+								onChange={handleChange('address')}
+								onBlur={handleBlur('address')}
+								touched={touched.address}
+							/>
+							<FormItem
+								label="Pin Code"
+								name="pincode"
+								inputType="tel"
+								placeholder="Pin Code"
+								value={values.pincode}
+								error={errors.pincode}
+								onChange={handleChange('pincode')}
+								onBlur={handleBlur('pincode')}
+								touched={touched.pincode}
+							/>
 
-				<FormItem
-					label="Country"
-					name="country"
-					value=""
-					placeholder="Enter your country"
-					select={[{ val: 'India', label: 'India' }]}
-				/>
-			</div>
+							<FormItem
+								label="Country"
+								name="country"
+								placeholder="Enter your country"
+								select={[{ val: 'India', label: 'India' }]}
+								value={values.country}
+								error={errors.country}
+								onChange={handleChange('country')}
+								onBlur={handleBlur('country')}
+								touched={touched.country}
+							/>
+						</div>
 
-			<AppBtn className="save-changes-btn">Save Changes</AppBtn>
-			{/* </div> */}
-		</Container>
+						<AppBtn btnType="submit" className="save-changes-btn">
+							Save Changes
+						</AppBtn>
+					</Container>
+				</form>
+			)}
+		</Formik>
 	);
 };
 
 const Container = styled.div`
-	/* .user-form-con { */
 	background: #fff;
-	/* max-width: 400px; */
 	width: 100%;
 	padding: 25px;
 	border-radius: 15px;
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	/* box-shadow: 2px 2px 10px rgba(230, 230, 230, 0.2); */
 
 	.form-inputs {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		/* flex-direction: column; */
 		gap: 20px;
 	}
 
@@ -73,7 +113,6 @@ const Container = styled.div`
 		max-width: fit-content;
 		margin-left: auto;
 	}
-	/* } */
 
 	.select-con {
 		display: flex;
@@ -86,8 +125,6 @@ const Container = styled.div`
 			position: relative;
 			width: 100%;
 			height: 42px;
-			/* border: 1.5px solid
-				${({ error }) => (error ? 'rgba(217, 84, 79, 0.58)' : '#dfdfdf')}; */
 			border-radius: 6px;
 			overflow: hidden;
 			* {
@@ -101,9 +138,6 @@ const Container = styled.div`
 				width: 100%;
 				height: 100%;
 				padding: 2px 10px;
-				/* background: ${({ error }) =>
-					error ? 'rgba(217, 84, 79, 0.158)' : '#fbfbfb'}; */
-
 				&:disabled {
 					cursor: not-allowed;
 					background: #f5f5f5;
