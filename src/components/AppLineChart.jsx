@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	LineChart,
+	Area,
 	Line,
 	XAxis,
 	YAxis,
@@ -8,6 +8,8 @@ import {
 	Tooltip,
 	Legend,
 	ResponsiveContainer,
+	AreaChart,
+	CartesianGrid,
 } from 'recharts';
 import { styled } from 'styled-components';
 
@@ -16,27 +18,49 @@ const AppLineChart = ({ data, margin }) => {
 		<Container style={{ margin }}>
 			<h4 className="title">Earnings for Past 7 days</h4>
 			<ResponsiveContainer width="95%" height={280}>
-				<LineChart
+				<AreaChart
 					data={data}
-					margin={{
-						top: 5,
-						right: 30,
-						left: 20,
-						bottom: 5,
-					}}
+					margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
 				>
+					<defs>
+						<linearGradient
+							id="colorPv"
+							x1="0"
+							y1="0"
+							x2="0"
+							y2="1"
+						>
+							<stop
+								offset="5%"
+								stopColor="#114edc"
+								stopOpacity={0.2}
+							/>
+							<stop
+								offset="95%"
+								stopColor="#82ca9d"
+								stopOpacity={0}
+							/>
+						</linearGradient>
+					</defs>
 					<XAxis dataKey="name" />
 					<YAxis />
+					<CartesianGrid
+						strokeDasharray="10 3 5"
+						horizontal={true}
+						vertical={false}
+						strokeOpacity={0.6}
+					/>
 					<Tooltip />
-					<Legend />
-					<Line
+
+					<Area
 						type="monotone"
 						dataKey="amount"
-						stroke="#8884d8"
+						stroke="#114edc"
 						strokeWidth={3}
-						activeDot={{ r: 8 }}
+						fillOpacity={1}
+						fill="url(#colorPv)"
 					/>
-				</LineChart>
+				</AreaChart>
 			</ResponsiveContainer>
 		</Container>
 	);
