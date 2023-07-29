@@ -12,3 +12,10 @@ export const formatCurrency = (number, currencyStr = '$') => {
 
 	return currencyStr + formattedNumber;
 };
+
+export const getInitials = (name) =>
+	name
+		.trim()
+		.split(' ')
+		.map((word) => word[0].toUpperCase())
+		.join('');

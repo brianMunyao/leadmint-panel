@@ -40,6 +40,7 @@ const BillingTab = () => {
 	);
 };
 const Container = styled.div`
+	height: 100%;
 	.dash-stats-con {
 		display: flex;
 		flex-wrap: wrap;

@@ -57,6 +57,7 @@ const AccountTab = () => {
 };
 
 const Container = styled.div`
+	height: 100%;
 	.tab-inner {
 		background: #fff;
 		padding: 20px;

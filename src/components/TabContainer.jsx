@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
+// import { IoCaretDown, IoSettingsOutline } from 'react-icons/io5';
 
 import { closeNav, openNav } from '../store/reducers/navReducer';
-import { formatCurrency } from '../utils/funcs';
-import { IoSettingsOutline } from 'react-icons/io5';
+import { formatCurrency, getInitials } from '../utils/funcs';
+import colors from '../config/colors';
 
 const TabContainer = ({ title = '', children }) => {
 	const navOpened = useSelector((state) => state.nav.navOpened);
 	const dispatch = useDispatch();
 
+	const user = { name: 'Rishav Raina', email: 'rishavraina@gmail.com' };
+
+	const [userInfo, setUserInfo] = useState(false);
+
+	const closeUserInfo = () => setUserInfo(false);
+	const toggleUserInfo = () => setUserInfo(!userInfo);
+
 	return (
-		<Container>
+		<Container userInfo={userInfo}>
 			<div className="tab-topbar">
 				<div className="icon-title">
 					{navOpened ? (
@@ -44,9 +52,22 @@ const TabContainer = ({ title = '', children }) => {
 						<p className="title">Last Month</p>
 					</div>
 					<div className="separator"></div>
-					<span className="user-email">risahvraina@gmail.com</span>
-					<span className="settings-icon">
+
+					{/* <span className="settings-icon">
 						<IoSettingsOutline />
+					</span> */}
+
+					<span className="user-icon" onMouseLeave={closeUserInfo}>
+						<span className="initials" onClick={toggleUserInfo}>
+							{getInitials(user.name)}
+						</span>
+
+						<div className="user-info">
+							<div className="top">
+								<span className="user-name">{user.name}</span>
+								<span className="user-email">{user.email}</span>
+							</div>
+						</div>
 					</span>
 				</div>
 			</div>
@@ -172,6 +193,7 @@ const Container = styled.div`
 				.subtitle {
 					font-size: 18px;
 					font-weight: 600;
+					color: ${colors.blueDark};
 				}
 			}
 			.settings-icon {
@@ -180,6 +202,47 @@ const Container = styled.div`
 					font-size: 22px;
 					&:hover {
 						transform: rotate(10deg);
+					}
+				}
+			}
+
+			.user-icon {
+				background: ${colors.blueLight};
+				position: relative;
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 30px;
+				cursor: pointer;
+
+				.initials {
+					color: ${colors.primaryDark};
+					font-weight: 600;
+				}
+
+				.user-info {
+					position: absolute;
+					display: ${({ userInfo }) => (userInfo ? 'block' : 'none')};
+					background: #fff;
+					padding: 18px;
+					box-shadow: 2px 1px 10px rgba(240, 240, 240, 0.7);
+					border-radius: 10px;
+					border: 0.5px solid #e5e5e5;
+					bottom: 0;
+					right: 0;
+					transform: translateY(90%);
+					.top {
+						display: flex;
+						flex-direction: column;
+						gap: 3px;
+						font-size: 15px;
+						letter-spacing: 0.2px;
+						opacity: 0.8;
+						.user-name {
+							font-weight: 600;
+						}
 					}
 				}
 			}

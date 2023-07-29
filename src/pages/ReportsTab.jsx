@@ -54,6 +54,7 @@ const ReportsTab = () => {
 };
 
 const Container = styled.div`
+	height: 100%;
 	.reports-inner {
 		display: flex;
 		flex-direction: column;
