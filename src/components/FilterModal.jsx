@@ -1,10 +1,10 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { IoClose } from 'react-icons/io5';
 
 import AppModal from './AppModal';
 import { closeFilterModal } from '../store/reducers/appsReducer';
-import { IoClose } from 'react-icons/io5';
 
 const FilterModal = () => {
 	const { filterModalOpen, apps } = useSelector((state) => state.apps);
@@ -77,28 +77,6 @@ const FilterModal = () => {
 		</Container>
 	);
 };
-
-{
-	/* <TempInput>
-    <label htmlFor="date">By Date</label>
-    <input name="date" id="date" type="date" />
-</TempInput>
-
-<TempInput>
-    <label htmlFor="date">By App</label>
-    <select name="byApp" id="byApp">
-        <option value="" disabled hidden selected>
-            Select App
-        </option>
-        {apps.map((app) => (
-            <option value={app.appID}>
-                {app.name}
-            </option>
-        ))}
-    </select>
-</TempInput> */
-}
-
 const TempInput = styled.div`
 	display: flex;
 	flex-direction: column;

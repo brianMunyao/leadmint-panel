@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-
-import TabContainer from '../components/TabContainer';
-import TopAppsTable from '../components/TopAppsTable';
 import { styled } from 'styled-components';
 
-const ManageAppsTab = () => {
-	// const [addAppForm, setAddAppForm] = useState(false);
-	// const openAddAppForm = () => setAddAppForm(true);
-	// const closeAddAppForm = () => setAddAppForm(false);
+import TabContainer from '../components/TabContainer';
 
-	// const apps = useSelector((state) => state.apps.apps);
+const ManageAppsTab = () => {
 	return (
 		<Container>
 			<TabContainer title="Manage Apps">
-				{/* <TopAppsTable data={apps} addAppBtn={openAddAppForm} /> */}
 				<Outlet />
 			</TabContainer>
 		</Container>

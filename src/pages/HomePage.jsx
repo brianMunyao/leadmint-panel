@@ -6,21 +6,19 @@ import { BsFillFileEarmarkTextFill } from 'react-icons/bs';
 import { MdOutlineAppRegistration } from 'react-icons/md';
 import { TbLogout2, TbReportAnalytics } from 'react-icons/tb';
 import { FaUserCog } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 
 import DashBoardTab from './DashBoardTab';
 import leadmint from '../assets/leadmint-white.webp';
 import leadmintMini from '../assets/leadmint-mini.png';
 import BillingTab from './BillingTab';
-// import colors from '../config/colors';
 import NavItem from '../components/NavItem';
 import data from '../config/data.json';
 import ManageAppsTab from './ManageAppsTab';
 import ReportsTab from './ReportsTab';
 import AccountTab from './AccountTab';
-import { useDispatch, useSelector } from 'react-redux';
 import { closeNav, openNav } from '../store/reducers/navReducer';
 import AddAppModal from '../components/AddAppModal';
-// import { closeAddAppModal } from '../store/reducers/appsReducer';
 import FilterModal from '../components/FilterModal';
 
 const HomePage = () => {
@@ -62,7 +60,6 @@ const HomePage = () => {
 
 	const dispatch = useDispatch();
 	const navOpened = useSelector((state) => state.nav.navOpened);
-	// const addAppModal = useSelector((state) => state.apps.addAppModal);
 
 	const logoutUser = () => {
 		navigate('/login');
@@ -140,7 +137,6 @@ const Container = styled.div`
 	position: relative;
 	width: 100%;
 	height: 100vh;
-	/* overflow: hidden; */
 
 	//positioning styles
 	nav,

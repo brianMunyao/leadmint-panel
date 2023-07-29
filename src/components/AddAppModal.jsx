@@ -182,7 +182,7 @@ const AddAppModal = () => {
 						{step === 2 && (
 							<div className="form-con">
 								<h2 className="form-title">
-									Advance Information
+									Advanced Information
 								</h2>
 								<p className="form-subtitle">
 									Let's start with some visuals. You can make
