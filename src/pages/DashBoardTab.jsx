@@ -89,7 +89,12 @@ const DashBoardTab = () => {
 					{/* <AppBarChart /> */}
 					<AppLineChart data={weekData} />
 					<div className="table">
-						<TopAppsTable brief data={apps} />
+						<TopAppsTable
+							brief
+							data={apps}
+							addAppBtn={false}
+							allowExport={false}
+						/>
 					</div>
 				</div>
 			</TabContainer>

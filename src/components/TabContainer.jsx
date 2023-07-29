@@ -251,6 +251,7 @@ const Container = styled.div`
 	.tab-content {
 		padding: 20px;
 		height: 100%;
+		background: #eceef1;
 		/* overflow-y: auto; */
 	}
 `;

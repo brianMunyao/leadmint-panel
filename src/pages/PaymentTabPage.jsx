@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-// import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
 import FormItem from '../components/FormItem';
 import colors from '../config/colors';

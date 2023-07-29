@@ -76,7 +76,7 @@ const HomePage = () => {
 				? dispatch(closeNav())
 				: dispatch(openNav());
 		});
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<>

@@ -1,12 +1,14 @@
 import React from 'react';
+import { styled } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 
 import TabContainer from '../components/TabContainer';
 import AppLineChart from '../components/AppLineChart';
-import TopAppsTable from '../components/TopAppsTable';
-import { useDispatch, useSelector } from 'react-redux';
-import { styled } from 'styled-components';
+// import TopAppsTable from '../components/TopAppsTable';
 import AppBtn from '../components/AppBtn';
 import { openFilterModal } from '../store/reducers/appsReducer';
+import AppTable from '../components/AppTable';
+import { formatCurrency } from '../utils/funcs';
 
 const data = [
 	{
@@ -39,6 +41,42 @@ const data = [
 	},
 ];
 
+const reportColumns = [
+	{
+		field: 'appID',
+		headerName: 'App ID',
+		width: 75,
+		type: 'number',
+	},
+	{
+		field: 'name',
+		headerName: 'Name',
+		width: 100,
+		flex: 1,
+	},
+	{
+		field: 'status',
+		headerName: 'Status',
+		// width: 100,
+		flex: 1,
+	},
+	{
+		field: 'date',
+		headerName: 'Date',
+		// width: 0,
+		flex: 1,
+		type: 'date',
+	},
+	{
+		field: 'revenue',
+		headerName: 'Earnings This Month',
+		// width: 0,
+		flex: 1,
+		type: 'number',
+		renderCell: (params) => formatCurrency(params.row.revenue),
+	},
+];
+
 const ReportsTab = () => {
 	const apps = useSelector((state) => state.apps.apps);
 	const dispatch = useDispatch();
@@ -48,6 +86,8 @@ const ReportsTab = () => {
 			<TabContainer title="Reports">
 				<div className="reports-inner">
 					<div className="filter-btn-con">
+						<span>App Reports</span>
+
 						<AppBtn
 							style={{ width: 100 }}
 							onClick={() => dispatch(openFilterModal())}
@@ -57,7 +97,15 @@ const ReportsTab = () => {
 					</div>
 					<AppLineChart data={data} />
 
-					<TopAppsTable data={apps} />
+					<AppTable
+						title="Recent Data"
+						allowExport={false}
+						addAppBtn={false}
+						data={apps}
+						// TopToolbar={() => <div>hello</div>}
+						columns={reportColumns}
+					/>
+					{/* <TopAppsTable data={apps} disableEditColumn /> */}
 				</div>
 			</TabContainer>
 		</Container>
@@ -73,7 +121,10 @@ const Container = styled.div`
 
 		.filter-btn-con {
 			display: flex;
-			justify-content: flex-end;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 17px;
+			font-weight: 600;
 		}
 	}
 `;

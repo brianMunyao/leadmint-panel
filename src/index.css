@@ -55,7 +55,7 @@ button {
 	outline: none !important;
 }
 .MuiDataGrid-root {
-	border-color: rgba(0, 0, 0, 0);
+	border: none !important; /* Remove the border of the outer element */
 }
 
 .ReactModal__Overlay {

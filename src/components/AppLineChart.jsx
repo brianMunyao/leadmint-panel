@@ -1,12 +1,9 @@
 import React from 'react';
 import {
 	Area,
-	Line,
 	XAxis,
 	YAxis,
-	// CartesianGrid,
 	Tooltip,
-	Legend,
 	ResponsiveContainer,
 	AreaChart,
 	CartesianGrid,

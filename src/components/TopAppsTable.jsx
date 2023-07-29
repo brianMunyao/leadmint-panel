@@ -1,51 +1,37 @@
-import {
-	DataGrid,
-	GridRow,
-	GridToolbarContainer,
-	GridToolbarExport,
-} from '@mui/x-data-grid';
-// import moment from 'moment';
+import { DataGrid } from '@mui/x-data-grid';
 import React from 'react';
 import { styled } from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
 import AppBtn from './AppBtn';
-// import AppModal from './AppModal';
-import { openAddAppModal } from '../store/reducers/appsReducer';
-// import {
-// 	openAddAppModal,
-// 	closeAddAppModal,
-// } from '../store/reducers/appsReducer';
+import TableToolbar from './TableToolbar';
 
-const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
-	// const [addAppForm, setAddAppForm] = useState(true);
-	// const openAddAppForm = () => setAddAppForm(true);
-	// const closeAddAppForm = () => setAddAppForm(false);
-
-	const dispatch = useDispatch();
-
+const TopAppsTable = ({
+	title = 'Top Apps',
+	data = [],
+	allowExport = true,
+	addAppBtn,
+	brief,
+	rowsPerPage = 10,
+}) => {
 	const columnsBrief = [
 		{
 			field: 'appID',
 			headerName: 'App ID',
-			disableColumnMenu: true,
 			type: 'number',
 			width: 70,
 		},
 		{
 			field: 'name',
 			headerName: 'Name',
-			width: 90,
-			disableColumnMenu: true,
+			flex: 1,
 		},
 		{
 			field: 'revenue',
 			headerName: 'Revenue',
-			width: 100,
-			disableColumnMenu: true,
+			flex: 1,
 			type: 'number',
 			renderCell: (params) => {
 				return formatCurrency(params.row.revenue);
@@ -54,23 +40,20 @@ const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
 		{
 			field: 'click',
 			headerName: 'Click',
-			width: 70,
-			disableColumnMenu: true,
+			flex: 1,
 			type: 'number',
 		},
 		{
 			field: 'conversion',
 			headerName: 'Conversion',
-			// width: 100,
+			flex: 1,
 			type: 'number',
-			disableColumnMenu: true,
 		},
 		{
 			field: 'users',
 			headerName: 'Users',
-			width: 65,
+			flex: 1,
 			type: 'number',
-			disableColumnMenu: true,
 		},
 	];
 
@@ -78,20 +61,19 @@ const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
 		{
 			field: 'appID',
 			headerName: 'App ID',
-			disableColumnMenu: true,
 			type: 'number',
-			width: 100,
+			width: 70,
 		},
 		{
 			field: 'name',
 			headerName: 'Name',
-			disableColumnMenu: true,
+			flex: 1,
 		},
 		{
 			field: 'revenue',
 			headerName: 'Revenue',
-			disableColumnMenu: true,
 			type: 'number',
+			flex: 1,
 			renderCell: (params) => {
 				return formatCurrency(params.row.revenue);
 			},
@@ -99,40 +81,31 @@ const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
 		{
 			field: 'click',
 			headerName: 'Click',
-			disableColumnMenu: true,
 			type: 'number',
-			width: 130,
+			flex: 1,
 		},
 		{
 			field: 'conversion',
 			headerName: 'Conversion',
 			type: 'number',
-			disableColumnMenu: true,
-			width: 130,
+			flex: 1,
 		},
 		{
 			field: 'users',
 			headerName: 'Users',
-			width: 120,
+			flex: 1,
 			type: 'number',
-			disableColumnMenu: true,
 		},
 		{
 			field: 'edit',
 			headerName: '',
 			sortable: false,
-			width: 100,
-			disableColumnMenu: true,
+			flex: 1,
 			disableClickEventBubbling: true,
 			renderCell: (params) => {
-				// const onClick = (e) => {
-				// 	const currentRow = params.row;
-				// 	return alert(JSON.stringify(currentRow, null, 4));
-				// };
-
 				return (
 					<Link to={`/manage-apps/edit-app/${params.row.id}`}>
-						<button className="edit-btn">Edit</button>
+						<AppBtn className="edit-btn">Edit</AppBtn>
 					</Link>
 				);
 			},
@@ -143,75 +116,43 @@ const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
 		console.log(params);
 	};
 
-	const CustomToolbar = () => {
-		return (
-			<GridToolbarContainer
-				style={{
-					display: 'flex',
-					justifyContent: 'space-between',
-					alignItems: 'center',
-					padding: '5px 10px 0',
-				}}
-			>
-				<h3 style={{ marginTop: 5, marginLeft: 5 }}>{title}</h3>
-
-				<div>
-					{!brief && <GridToolbarExport />}
-					{addAppBtn && (
-						<AppBtn
-							className="add-app-btn"
-							onClick={() => dispatch(openAddAppModal())}
-						>
-							Add New App
-						</AppBtn>
-					)}
-				</div>
-			</GridToolbarContainer>
-		);
-	};
-	/* <Link to={'/manage-apps/add-app'}> */
-	/* </Link> */
-
-	const EmptyRowsMessage = () => {
-		return <GridRow>kjs</GridRow>;
-	};
-
 	return (
-		<>
-			<Container>
-				<DataGrid
-					rows={data}
-					columns={brief ? columnsBrief : columns}
-					disableRowSelectionOnClick
-					initialState={
-						{
-							// pagination: {
-							// 	paginationModel: { page: 0, pageSize: 5 },
-							// },
-						}
-					}
-					pageSizeOptions={5}
-					style={{ background: '#fff' }}
-					onRowDoubleClick={handleRowClick}
-					slots={{
-						toolbar: CustomToolbar,
-						noRowsOverlay: EmptyRowsMessage,
-					}}
-					hideFooter={brief}
-				/>
-			</Container>
-		</>
+		<Container>
+			<DataGrid
+				rows={data}
+				columns={brief ? columnsBrief : columns}
+				disableRowSelectionOnClick
+				disableColumnMenu
+				initialState={{
+					pagination: {
+						paginationModel: { page: 0, pageSize: rowsPerPage },
+					},
+				}}
+				pageSizeOptions={5}
+				style={{ background: '#fff' }}
+				onRowDoubleClick={handleRowClick}
+				slots={{
+					toolbar: () => (
+						<TableToolbar
+							addAppBtn={addAppBtn}
+							allowExport={allowExport}
+							title={title}
+						/>
+					),
+					noRowsOverlay: () => <div>No data</div>,
+				}}
+				hideFooter={brief}
+			/>
+		</Container>
 	);
 };
 
 const Container = styled.div`
-	/* background: #fff;
-	padding: 20px;
-	box-shadow: 2px 1px 4px rgba(240, 240, 240, 0.7);
-	border-radius: 10px; */
 	width: 100%;
 	height: fit-content;
-	/* overflow-y: auto; */
+	border-radius: 10px;
+	overflow: hidden;
+	padding: 10px;
 
 	.table-app-logo {
 		position: relative;

@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import FormItemAlt from '../components/FormItemAlt';
 import AppBtn from '../components/AppBtn';
 import colors from '../config/colors';
 
 const UpdateAppForm = () => {
+	const { id } = useParams();
+	const apps = useSelector((state) => state.apps.apps);
 	const [appData, setAppData] = useState(null);
 
 	const [step, setStep] = useState(1);
@@ -19,19 +23,17 @@ const UpdateAppForm = () => {
 		console.log(fullDetails);
 	};
 
+	useEffect(() => {
+		try {
+			if (id) {
+				const app = apps.filter((ap) => ap.id === Number(id));
+				if (app.length === 1) setAppData(app[0]);
+			}
+		} catch (e) {}
+	}, [apps, id]);
+
 	return (
 		<>
-			{/* <Link
-				to={-1}
-				style={{
-					display: 'flex',
-					alignItems: 'center',
-					gap: 5,
-					marginBottom: 20,
-				}}
-			>
-				<IoArrowBackOutline /> <span>Back</span>
-			</Link> */}
 			<Container>
 				<div className="inner">
 					<div className="form-top">
