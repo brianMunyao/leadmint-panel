@@ -7,17 +7,26 @@ import {
 // import moment from 'moment';
 import React from 'react';
 import { styled } from 'styled-components';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import colors from '../config/colors';
 import { formatCurrency } from '../utils/funcs';
 import AppBtn from './AppBtn';
-import { Link } from 'react-router-dom';
 // import AppModal from './AppModal';
-// import AddAppModal from './AddAppModal';
-// import { openAddAppModal } from '../store/reducers/appsReducer';
+import { openAddAppModal } from '../store/reducers/appsReducer';
+// import {
+// 	openAddAppModal,
+// 	closeAddAppModal,
+// } from '../store/reducers/appsReducer';
 
 const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
+	// const [addAppForm, setAddAppForm] = useState(true);
+	// const openAddAppForm = () => setAddAppForm(true);
+	// const closeAddAppForm = () => setAddAppForm(false);
+
+	const dispatch = useDispatch();
+
 	const columnsBrief = [
 		{
 			field: 'appID',
@@ -149,42 +158,49 @@ const TopAppsTable = ({ title = 'Top Apps', data = [], addAppBtn, brief }) => {
 				<div>
 					{!brief && <GridToolbarExport />}
 					{addAppBtn && (
-						<Link to={'/manage-apps/add-app'}>
-							<AppBtn className="add-app-btn">Add New App</AppBtn>
-						</Link>
+						<AppBtn
+							className="add-app-btn"
+							onClick={() => dispatch(openAddAppModal())}
+						>
+							Add New App
+						</AppBtn>
 					)}
 				</div>
 			</GridToolbarContainer>
 		);
 	};
+	/* <Link to={'/manage-apps/add-app'}> */
+	/* </Link> */
 
 	const EmptyRowsMessage = () => {
 		return <GridRow>kjs</GridRow>;
 	};
 
 	return (
-		<Container>
-			<DataGrid
-				rows={data}
-				columns={brief ? columnsBrief : columns}
-				disableRowSelectionOnClick
-				initialState={
-					{
-						// pagination: {
-						// 	paginationModel: { page: 0, pageSize: 5 },
-						// },
+		<>
+			<Container>
+				<DataGrid
+					rows={data}
+					columns={brief ? columnsBrief : columns}
+					disableRowSelectionOnClick
+					initialState={
+						{
+							// pagination: {
+							// 	paginationModel: { page: 0, pageSize: 5 },
+							// },
+						}
 					}
-				}
-				pageSizeOptions={5}
-				style={{ background: '#fff' }}
-				onRowDoubleClick={handleRowClick}
-				slots={{
-					toolbar: CustomToolbar,
-					noRowsOverlay: EmptyRowsMessage,
-				}}
-				hideFooter={brief}
-			/>
-		</Container>
+					pageSizeOptions={5}
+					style={{ background: '#fff' }}
+					onRowDoubleClick={handleRowClick}
+					slots={{
+						toolbar: CustomToolbar,
+						noRowsOverlay: EmptyRowsMessage,
+					}}
+					hideFooter={brief}
+				/>
+			</Container>
+		</>
 	);
 };
 

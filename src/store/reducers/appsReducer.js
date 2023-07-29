@@ -34,17 +34,17 @@ const appsSlice = createSlice({
 	name: 'apps',
 	initialState: {
 		apps: apps,
-		addAppModal: false,
+		addAppModalOpen: false,
 	},
 	reducers: {
 		setApps: (state, action) => {
 			state.apps = action.payload;
 		},
 		openAddAppModal: (state) => {
-			state.addAppModal = true;
+			state.addAppModalOpen = true;
 		},
 		closeAddAppModal: (state) => {
-			state.addAppModal = false;
+			state.addAppModalOpen = false;
 		},
 	},
 });

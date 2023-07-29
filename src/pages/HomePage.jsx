@@ -129,10 +129,7 @@ const HomePage = () => {
 				</main>
 			</Container>
 
-			<AddAppModal
-				isModalOpen={addAppModal}
-				closeModal={() => dispatch(closeAddAppModal())}
-			/>
+			<AddAppModal />
 		</>
 	);
 };

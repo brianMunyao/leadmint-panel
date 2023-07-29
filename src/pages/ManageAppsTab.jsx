@@ -7,11 +7,11 @@ import TopAppsTable from '../components/TopAppsTable';
 import { styled } from 'styled-components';
 
 const ManageAppsTab = () => {
-	const [addAppForm, setAddAppForm] = useState(false);
-	const openAddAppForm = () => setAddAppForm(true);
-	const closeAddAppForm = () => setAddAppForm(false);
+	// const [addAppForm, setAddAppForm] = useState(false);
+	// const openAddAppForm = () => setAddAppForm(true);
+	// const closeAddAppForm = () => setAddAppForm(false);
 
-	const apps = useSelector((state) => state.apps.apps);
+	// const apps = useSelector((state) => state.apps.apps);
 	return (
 		<Container>
 			<TabContainer title="Manage Apps">
